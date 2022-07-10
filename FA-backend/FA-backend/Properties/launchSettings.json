@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "RestFulHotel": {
+    "FA-backend": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

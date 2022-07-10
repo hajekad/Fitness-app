@@ -46,7 +46,7 @@ public class PersonController : ControllerBase
         int ret = personService.Createperson(person);
 
         //unimportant check, can be safely removed
-        if (ret < 5)
+        if (ret < 3)
             return false;
         
         return true;

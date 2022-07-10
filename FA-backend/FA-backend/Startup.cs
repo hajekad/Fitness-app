@@ -1,6 +1,8 @@
 using Hajekad.FA_backend.ApplicationLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Hajekad.FA_backend.ApplicationLayer.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HajekAd.FitnessApp.Api
 {

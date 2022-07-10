@@ -534,6 +534,16 @@
             "rid": "win"
           }
         }
+      },
+      "Hajekad.FA-backend.ApplicationLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Hajekad.FA-backend.ApplicationLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hajekad.FA-backend.ApplicationLayer.dll": {}
+        }
       }
     }
   },
@@ -1741,11 +1751,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Hajekad.FA-backend.ApplicationLayer/1.0.0": {
+      "type": "project",
+      "path": "../Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
+      "msbuildProject": "../Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "EntityFramework >= 6.4.4",
+      "Hajekad.FA-backend.ApplicationLayer >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.0-preview.5.22302.2",
       "Npgsql >= 7.0.0-preview.5",
       "Swashbuckle.AspNetCore >= 6.2.3"
@@ -1775,7 +1791,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
+              "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

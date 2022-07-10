@@ -13,5 +13,5 @@ public interface IPersonService
     
     int Createperson(PersonBase person);
     
-    bool DeletePerson(int id);
+    bool DeletePerson(PersonBase person);
 }

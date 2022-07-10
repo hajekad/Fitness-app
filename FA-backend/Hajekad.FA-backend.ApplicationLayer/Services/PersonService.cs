@@ -82,7 +82,7 @@ public class PersonService : IPersonService
         return cmd.ExecuteNonQuery();
     }
 
-    public bool DeletePerson(int id)
+    public bool DeletePerson(PersonBase person)
     {
         throw new NotImplementedException();
     }

@@ -39,10 +39,23 @@ public class PersonService : IPersonService
 
     public PersonBase GetPersonByUser(string username, string password)
     {
-        string sufix =  $"FROM user WHERE name = '{username}' AND password = '{password}'";
+        string sufix =  $"FROM \"user\" WHERE name = '{username}' AND password = '{password}'";
 
         var id = getParam("id_user", sufix);
         var email = getParam("email", sufix);
+        var birth_date = getParam("birth_date", sufix);
+        var height = getParam("height", sufix);
+        var gender = getParam("gender", sufix);
+        
+        return new PersonBase(id, username, email, password, birth_date, height, gender);
+    }
+
+    public PersonBase GetPersonByEmail(string email, string password)
+    {
+        string sufix =  $"FROM user WHERE email = '{email}' AND password = '{password}'";
+
+        var id = getParam("id_user", sufix);
+        var username = getParam("username", sufix);
         var birth_date = getParam("birth_date", sufix);
         var height = getParam("height", sufix);
         var gender = getParam("gender", sufix);
@@ -58,9 +71,9 @@ public class PersonService : IPersonService
     public int Createperson(PersonBase person)
     {
         var sql = "INSERT INTO \"user\" (name, email, password, birth_date, height, gender) " +
-                  $"VALUES ({person.name}, {person.email}, " +
-                  $"{person.password}, {person.birth_date}, " +
-                  $"{StringToInteger(person.height)} , {person.gender});";
+                  $"VALUES ('{person.name}', '{person.email}', " +
+                  $"'{person.password}', '{person.birth_date}', " +
+                  $"{StringToInteger(person.height)} , '{person.gender}');";
         
         Console.WriteLine($"{sql}");
         

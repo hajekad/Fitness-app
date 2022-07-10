@@ -14,7 +14,7 @@ public class PersonBase
     public string height;
     public string gender;
 
-    public PersonBase(string?  id, string na, string em, string pass, string birth, string height, string gender)
+    public PersonBase(string? id, string na, string em, string pass, string birth, string height, string gender)
     {
         IdUser = id;
         name = na;

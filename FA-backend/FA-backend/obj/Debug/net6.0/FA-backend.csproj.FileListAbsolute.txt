@@ -58,3 +58,6 @@
 /home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/obj/Debug/net6.0/ref/FA-backend.dll
 /home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/bin/Debug/net6.0/Hajekad.FA-backend.ApplicationLayer.dll
 /home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/bin/Debug/net6.0/Hajekad.FA-backend.ApplicationLayer.pdb
+/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/bin/Debug/net6.0/Microsoft.DotNet.PlatformAbstractions.dll
+/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/bin/Debug/net6.0/Newtonsoft.Json.dll

@@ -5,11 +5,11 @@ namespace Hajekad.FA_backend.ApplicationLayer.Services;
 
 public interface IPersonService
 {
-    PersonBase GetPersonById(int id);
+    PersonBase GetPersonByUser(string username, string password);
     
     List<PersonBase> GetPersons();
     
-    bool Createperson(PersonBase person);
+    int Createperson(PersonBase person);
     
     bool DeletePerson(int id);
 }

@@ -8,11 +8,16 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
+
     <ItemGroup>
         <PackageReference Include="EntityFramework" Version="6.4.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-preview.5.22302.2" />
         <PackageReference Include="Npgsql" Version="7.0.0-preview.5" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
-    
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hajekad.FA-backend.ApplicationLayer\Hajekad.FA-backend.ApplicationLayer.csproj" />
+    </ItemGroup>
 </Project>

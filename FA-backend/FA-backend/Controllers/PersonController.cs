@@ -39,15 +39,19 @@ public class PersonController : ControllerBase
         return person;
     }
 
-    [HttpPost("{n} {e} {p} {b} {h} {g}")]
+    [HttpDelete("{n} {e} {p} {b} {h} {g}")]
     public ActionResult<bool> CreateNewPerson(string n, string e, string p, string b, string h, string g)
     {
         var person = new PersonBase(null, n, e, p, b, h, g);
         int ret = personService.Createperson(person);
 
-        //unimportant check, can be safely removed
-        if (ret < 3)
-            return false;
+        return true;
+    }
+
+    [HttpPost("{person}")]
+    public ActionResult<bool> DeletePerson([FromRoute] PersonBase person)
+    {
+        personService.DeletePerson(person);
         
         return true;
     }

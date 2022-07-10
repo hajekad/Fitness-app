@@ -17,21 +17,27 @@ public class PersonController : ControllerBase
     }
 
 
-    [HttpGet("{id}")]
-    public ActionResult<string> GetPersonById([FromRoute] int id)
+    [HttpGet("{name} {password}")]
+    public ActionResult<PersonBase> GetPersonByUser([FromRoute] string name, [FromRoute] string password)
     {
-        var person = personService.GetPersonById(id);
+        var person = personService.GetPersonByUser(name, password);
 
         if (person == null)
-            return BadRequest("id not present!");
+            return BadRequest("credentials not present!");
         
-        return $"{person.Name} {person.Surname} {person.SkinColour}";
+        return person;
     }
 
-    [HttpPost("{n} {s} {c}")]
-    public ActionResult<bool> CreateNewPerson(string n, string s, string c)
+    [HttpPost("{n} {e} {p} {b} {h} {g}")]
+    public ActionResult<bool> CreateNewPerson(string n, string e, string p, string b, string h, string g)
     {
-        bool ret = personService.Createperson(new PersonBase(n,s,c));
-        return ret;
+        var person = new PersonBase(null, n, e, p, b, h, g);
+        int ret = personService.Createperson(person);
+
+        //unimportant check, can be safely removed
+        if (ret < 5)
+            return false;
+        
+        return true;
     }
 }

@@ -1,5 +1,6 @@
+using Hajekad.FA_backend.ApplicationLayer.Models;
 using Microsoft.AspNetCore.Mvc;
-//using Hajekad.FA_backend.ApplicationLayer.Services;
+using Hajekad.FA_backend.ApplicationLayer.Services;
 
 namespace HajekAd.FitnessApp.Api
 {
@@ -25,7 +26,7 @@ namespace HajekAd.FitnessApp.Api
         public static void ConfigureServices()
         {
             // add services
-            //builder.Services.AddTransient<IPersonService, IPersonService>();
+            builder.Services.AddSingleton<IPersonService, PersonService>();
             builder.Services.AddMvc();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

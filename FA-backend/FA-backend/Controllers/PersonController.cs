@@ -17,10 +17,21 @@ public class PersonController : ControllerBase
     }
 
 
-    [HttpGet("{name} {password}")]
-    public ActionResult<PersonBase> GetPersonByUser([FromRoute] string name, [FromRoute] string password)
+    [HttpGet("{credential} {password}")]
+    public ActionResult<PersonBase> GetPersonByUser([FromRoute] string credential, [FromRoute] string password)
     {
-        var person = personService.GetPersonByUser(name, password);
+        PersonBase person = null;
+        bool email = false;
+        int i = 0;
+        
+        for(;i < (credential.Length - 1); i++ )
+            if (credential[i] == '@')
+                break;
+                
+        if(credential[i] == '@')
+            person = personService.GetPersonByEmail(credential, password);
+        else
+            person = personService.GetPersonByUser(credential, password);
 
         if (person == null)
             return BadRequest("credentials not present!");
@@ -35,7 +46,7 @@ public class PersonController : ControllerBase
         int ret = personService.Createperson(person);
 
         //unimportant check, can be safely removed
-        if (ret < 5)
+        if (ret < 3)
             return false;
         
         return true;

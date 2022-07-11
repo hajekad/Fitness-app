@@ -6,13 +6,13 @@ namespace Hajekad.FA_backend.ApplicationLayer.Models;
  */
 public class PersonBase
 {
-    public string IdUser;
-    public string name;
-    public string email;
-    public string password;
-    public string birth_date;
-    public string height;
-    public string gender;
+    public string IdUser { get; set; }
+    public string name { get; set; }
+    public string email { get; set; }
+    public string password { get; set; }
+    public string birth_date { get; set; }
+    public string height { get; set; }
+    public string gender { get; set; }
 
     public PersonBase(string? id, string na, string em, string pass, string birth, string height, string gender)
     {

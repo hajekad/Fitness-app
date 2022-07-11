@@ -28,16 +28,21 @@ public class PersonService : IPersonService
         return ret;
     }
 
-    private string getParam(string par, string sufix)
+    private string?  getParam(string par, string sufix)
     {
-        var sql = $"SELECT DISTINCT {par} {sufix}";
+        var sql = $"SELECT DISTINCT \"{par}\" {sufix}";
         Console.WriteLine($"{sql}");
         using var cmd = new NpgsqlCommand(sql, con);
+
+        var ScalarCmd = cmd.ExecuteScalar();
+
+        if (ScalarCmd == null)
+            return null;
         
-        return new string( cmd.ExecuteScalar().ToString());
+        return new string( ScalarCmd.ToString());
     }
 
-    public PersonBase GetPersonByUser(string username, string password)
+    public PersonBase? GetPersonByUser(string username, string password)
     {
         string sufix =  $"FROM \"user\" WHERE name = '{username}' AND password = '{password}'";
 
@@ -46,26 +51,27 @@ public class PersonService : IPersonService
         var birth_date = getParam("birth_date", sufix);
         var height = getParam("height", sufix);
         var gender = getParam("gender", sufix);
+
+        if (gender == null)
+            return null;
         
         return new PersonBase(id, username, email, password, birth_date, height, gender);
     }
 
-    public PersonBase GetPersonByEmail(string email, string password)
+    public PersonBase? GetPersonByEmail(string email, string password)
     {
-        string sufix =  $"FROM user WHERE email = '{email}' AND password = '{password}'";
+        string sufix =  $"FROM \"user\" WHERE email = '{email}' AND password = '{password}'";
 
         var id = getParam("id_user", sufix);
-        var username = getParam("username", sufix);
+        var username = getParam("name", sufix);
         var birth_date = getParam("birth_date", sufix);
         var height = getParam("height", sufix);
         var gender = getParam("gender", sufix);
         
+        if (gender == null)
+            return null;
+        
         return new PersonBase(id, username, email, password, birth_date, height, gender);
-    }
-
-    public List<PersonBase> GetPersons()
-    {
-        throw new NotImplementedException();
     }
 
     public int Createperson(PersonBase person)

@@ -39,16 +39,18 @@ public class PersonController : ControllerBase
         return person;
     }
 
-    [HttpDelete("{n} {e} {p} {b} {h} {g}")]
-    public ActionResult<bool> CreateNewPerson(string n, string e, string p, string b, string h, string g)
+    [HttpPost("{name} {email} {pass} {birth} {height} {gender}")]
+    public ActionResult<PersonBase> CreateNewPerson([FromRoute] string name, [FromRoute] string email,
+                                                    [FromRoute] string pass, [FromRoute] string birth,
+                                                    [FromRoute] string height, [FromRoute] string gender)
     {
-        var person = new PersonBase(null, n, e, p, b, h, g);
+        var person = new PersonBase(null, name, email, pass, birth, height, gender);
         int ret = personService.Createperson(person);
 
-        return true;
+        return personService.GetPersonByEmail(email, pass);
     }
 
-    [HttpPost("{person}")]
+    [HttpDelete("{person}")]
     public ActionResult<bool> DeletePerson([FromRoute] PersonBase person)
     {
         personService.DeletePerson(person);

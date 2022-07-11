@@ -30,7 +30,7 @@ public class PersonService : IPersonService
 
     private string getParam(string par, string sufix)
     {
-        var sql = $"SELECT DISTINCT {par} {sufix}";
+        var sql = $"SELECT DISTINCT \"{par}\" {sufix}";
         Console.WriteLine($"{sql}");
         using var cmd = new NpgsqlCommand(sql, con);
         
@@ -52,20 +52,15 @@ public class PersonService : IPersonService
 
     public PersonBase GetPersonByEmail(string email, string password)
     {
-        string sufix =  $"FROM user WHERE email = '{email}' AND password = '{password}'";
+        string sufix =  $"FROM \"user\" WHERE email = '{email}' AND password = '{password}'";
 
         var id = getParam("id_user", sufix);
-        var username = getParam("username", sufix);
+        var username = getParam("name", sufix);
         var birth_date = getParam("birth_date", sufix);
         var height = getParam("height", sufix);
         var gender = getParam("gender", sufix);
         
         return new PersonBase(id, username, email, password, birth_date, height, gender);
-    }
-
-    public List<PersonBase> GetPersons()
-    {
-        throw new NotImplementedException();
     }
 
     public int Createperson(PersonBase person)

@@ -19,7 +19,7 @@ namespace HajekAd.FitnessApp.Api
             
             return app;
         }
-        
+
         /**
          * @brief
          * This does not work for some a reason that i cant find
@@ -34,17 +34,26 @@ namespace HajekAd.FitnessApp.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi", x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials()); // allow credentials
+
+            });
+            
         }
-        /**
-         * @brief
-         * This does not work for some a reason that i cant find
-         * Should Apply configuration for the run time environment
-         */
+        
+
         public static void Configure(IApplicationBuilder app, bool isDevelopment)
         {
             app.UseRouting();
+            app.UseCors("CorsApi");
             app.UseHttpsRedirection();
             app.UseAuthorization();
+            
             
             if(isDevelopment) ///Uses swagger for debugging purposes 
             {

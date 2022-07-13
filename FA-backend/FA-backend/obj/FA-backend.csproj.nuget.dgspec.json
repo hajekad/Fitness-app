@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj": {}
+    "/home/kuba/FitnessApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj": {}
   },
   "projects": {
-    "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj": {
+    "/home/kuba/FitnessApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj",
+        "projectUniqueName": "/home/kuba/FitnessApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj",
         "projectName": "FA-backend",
-        "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj",
-        "packagesPath": "/home/hajekad/.nuget/packages/",
-        "outputPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/FA-backend/obj/",
+        "projectPath": "/home/kuba/FitnessApp/Fitness-app/FA-backend/FA-backend/FA-backend.csproj",
+        "packagesPath": "/home/kuba/.nuget/packages/",
+        "outputPath": "/home/kuba/FitnessApp/Fitness-app/FA-backend/FA-backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/hajekad/.nuget/NuGet/NuGet.Config"
+          "/home/kuba/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
-                "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
+              "/home/kuba/FitnessApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
+                "projectPath": "/home/kuba/FitnessApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
               }
             }
           }
@@ -57,6 +57,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "WebApiContrib.Formatting.Jsonp": {
+              "target": "Package",
+              "version": "[3.0.2, )"
             }
           },
           "imports": [
@@ -81,17 +85,17 @@
         }
       }
     },
-    "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
+    "/home/kuba/FitnessApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
+        "projectUniqueName": "/home/kuba/FitnessApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
         "projectName": "Hajekad.FA-backend.ApplicationLayer",
-        "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
-        "packagesPath": "/home/hajekad/.nuget/packages/",
-        "outputPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/obj/",
+        "projectPath": "/home/kuba/FitnessApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
+        "packagesPath": "/home/kuba/.nuget/packages/",
+        "outputPath": "/home/kuba/FitnessApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/hajekad/.nuget/NuGet/NuGet.Config"
+          "/home/kuba/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

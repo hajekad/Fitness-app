@@ -1,10 +1,11 @@
 using Hajekad.FA_backend.ApplicationLayer;
 using Hajekad.FA_backend.ApplicationLayer.Models;
 using Hajekad.FA_backend.ApplicationLayer.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HajekAd.FitnessApp.Api.Controllers;
-
+[EnableCors("CorsApi")]
 [Route("api/persons")]
 [ApiController]
 public class PersonController : ControllerBase
@@ -14,6 +15,7 @@ public class PersonController : ControllerBase
     public PersonController(IPersonService personService)
     {
         this.personService = personService;
+        
     }
 
 

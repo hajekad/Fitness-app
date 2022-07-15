@@ -6,7 +6,7 @@ namespace Hajekad.FA_backend.ApplicationLayer.Models;
 
 public class PersonService : IPersonService
 {
-    private const String cs = "Host=localhost;Username=postgres;Password='lmaolol';Database=fitapp";
+    private const String cs = "Host=localhost;Username=postgres;Password=' ';Database=fitapp";
     private NpgsqlConnection con;
 
     public PersonService()

@@ -1,0 +1,28 @@
+*{
+  user-select: none;
+}
+
+section{
+  background-color: var(--bg-color-main);
+}
+
+#login-card{
+  width: 70%;
+}
+
+#log-btn{
+  background-color: var(--bg-color-impact);
+  color: var(--bg-color-offWhite);
+}
+
+input{
+  border-color: black;
+}
+
+input.ng-invalid.ng-touched{
+  border: red 2px solid;
+}
+
+.error-msg{
+  color: red;
+}

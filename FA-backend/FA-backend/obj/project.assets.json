@@ -1471,7 +1471,7 @@
           "lib/net45/WebApiContrib.Formatting.Jsonp.dll": {}
         }
       },
-      "Hajekad.FA-backend.ApplicationLayer/1.0.0": {
+      "Hajekad.FA_backend.ApplicationLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -1479,10 +1479,10 @@
           "Npgsql": "7.0.0-preview.5"
         },
         "compile": {
-          "bin/placeholder/Hajekad.FA-backend.ApplicationLayer.dll": {}
+          "bin/placeholder/Hajekad.FA_backend.ApplicationLayer.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Hajekad.FA-backend.ApplicationLayer.dll": {}
+          "bin/placeholder/Hajekad.FA_backend.ApplicationLayer.dll": {}
         }
       }
     }
@@ -5289,16 +5289,16 @@
         "webapicontrib.formatting.jsonp.nuspec"
       ]
     },
-    "Hajekad.FA-backend.ApplicationLayer/1.0.0": {
+    "Hajekad.FA_backend.ApplicationLayer/1.0.0": {
       "type": "project",
-      "path": "../Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
-      "msbuildProject": "../Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
+      "path": "../Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj",
+      "msbuildProject": "../Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "EntityFramework >= 6.4.4",
-      "Hajekad.FA-backend.ApplicationLayer >= 1.0.0",
+      "Hajekad.FA_backend.ApplicationLayer >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.0-preview.5.22302.2",
       "Npgsql >= 7.0.0-preview.5",
       "Swashbuckle.AspNetCore >= 6.2.3",
@@ -5330,8 +5330,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
-              "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
+            "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj": {
+              "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj"
             }
           }
         }

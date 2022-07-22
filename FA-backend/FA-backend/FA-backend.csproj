@@ -19,6 +19,6 @@
 
 
     <ItemGroup>
-      <ProjectReference Include="..\Hajekad.FA-backend.ApplicationLayer\Hajekad.FA-backend.ApplicationLayer.csproj" />
+      <ProjectReference Include="..\Hajekad.FA_backend.ApplicationLayer\Hajekad.FA_backend.ApplicationLayer.csproj" />
     </ItemGroup>
 </Project>

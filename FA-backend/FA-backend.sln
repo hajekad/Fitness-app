@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA-backend", "FA-backend\FA-backend.csproj", "{01C28960-A149-4CE2-A051-D4E2926D4326}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hajekad.FA-backend.ApplicationLayer", "Hajekad.FA-backend.ApplicationLayer\Hajekad.FA-backend.ApplicationLayer.csproj", "{60DB17D3-B7F2-4BAC-88A1-AA6B332A1E02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hajekad.FA_backend.ApplicationLayer", "Hajekad.FA_backend.ApplicationLayer\Hajekad.FA_backend.ApplicationLayer.csproj", "{60DB17D3-B7F2-4BAC-88A1-AA6B332A1E02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

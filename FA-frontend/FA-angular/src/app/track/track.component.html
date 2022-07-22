@@ -1,0 +1,44 @@
+<section id="content-wrapper" class="container-fluid">
+    <nav class="navbar" id="nav">
+        {{navText}}
+    </nav>
+
+    <div class="row text-center bg-success">
+        <div class="col bg-info">TEST</div>
+        <div class="col bg-success">TEST</div>
+        <div class="col bg-danger">TEST</div>
+        <div class="col bg-dark">TEST</div>
+        <div class="col bg-info">TEST</div>
+
+    </div>
+    <div class="row text-center bg-success">
+        <div class="col bg-info">TEST</div>
+        <div class="col bg-success">TEST</div>
+        <div class="col bg-danger">TEST</div>
+        <div class="col bg-dark">TEST</div>
+        <div class="col bg-info">TEST</div>
+
+    </div>
+    <div class="row text-center bg-success">
+        <div class="col bg-info">TEST</div>
+        <div class="col bg-success">TEST</div>
+        <div class="col bg-danger">TEST</div>
+        <div class="col bg-dark">TEST</div>
+        <div class="col bg-info">TEST</div>
+
+    </div>
+
+    <div class="row text-center">
+        <div class="col-2 bg-info border border-success" *ngFor="let text of random; let ind = index">{{text}}-{{ind}}</div>
+    </div>
+
+
+
+
+
+
+
+</section>
+    <button class="btn btn-outline-success mx-5 px-5" (click)="onClick()">
+        <mat-icon >home</mat-icon>
+    </button>

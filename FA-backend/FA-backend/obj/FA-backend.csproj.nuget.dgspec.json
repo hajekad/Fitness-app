@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
-                "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj"
+              "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj": {
+                "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj"
               }
             }
           }
@@ -85,14 +85,14 @@
         }
       }
     },
-    "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj": {
+    "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
-        "projectName": "Hajekad.FA-backend.ApplicationLayer",
-        "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/Hajekad.FA-backend.ApplicationLayer.csproj",
+        "projectUniqueName": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj",
+        "projectName": "Hajekad.FA_backend.ApplicationLayer",
+        "projectPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/Hajekad.FA_backend.ApplicationLayer.csproj",
         "packagesPath": "/home/hajekad/.nuget/packages/",
-        "outputPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA-backend.ApplicationLayer/obj/",
+        "outputPath": "/home/hajekad/strtUP/FitApp/Fitness-app/FA-backend/Hajekad.FA_backend.ApplicationLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/hajekad/.nuget/NuGet/NuGet.Config"

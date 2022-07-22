@@ -1,0 +1,15 @@
+/* *{
+    background-color: blueviolet;
+} */
+
+#nav{
+    width: 100vw;
+    margin-right: 0;
+    margin-left: 0;
+    color: white;
+    background-color: blueviolet;
+}
+
+#content-2{
+    border-margin:50px;
+}

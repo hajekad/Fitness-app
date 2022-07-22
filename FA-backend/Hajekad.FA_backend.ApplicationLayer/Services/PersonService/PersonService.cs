@@ -1,8 +1,7 @@
-using Hajekad.FA_backend.ApplicationLayer.Services;
-using Microsoft.AspNetCore.Mvc;
+using Hajekad.FA_backend.ApplicationLayer.Models;
 using Npgsql;
 
-namespace Hajekad.FA_backend.ApplicationLayer.Models;
+namespace Hajekad.FA_backend.ApplicationLayer.Services;
 
 public class PersonService : IPersonService
 {

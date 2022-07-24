@@ -1,44 +1,27 @@
 <section id="content-wrapper" class="container-fluid">
-    <nav class="navbar" id="nav">
-        {{navText}}
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <button class="btn btn-outline-info mx-5 px-5" type="button" (click)="onClick()" id="Home">
+            <mat-icon >home</mat-icon>
+        </button>
     </nav>
 
-    <div class="row text-center bg-success">
-        <div class="col bg-info">TEST</div>
-        <div class="col bg-success">TEST</div>
-        <div class="col bg-danger">TEST</div>
-        <div class="col bg-dark">TEST</div>
-        <div class="col bg-info">TEST</div>
+    <body id="MainBody">
+        <div class="TrackModule" align="center">
+            <circle-progress
+              [percent]="85"
+              [radius]="100"
+              [outerStrokeWidth]="16"
+              [innerStrokeWidth]="8"
+              [outerStrokeColor]="'#880808'"
+              [innerStrokeColor]="'#C7E596'"
+              [animation]="true"
+              [animationDuration]="300"
+            ></circle-progress>
+        </div>
+        
+        <div class="Timer" align="center">
+            <countdown #cd></countdown>
+        </div>
 
-    </div>
-    <div class="row text-center bg-success">
-        <div class="col bg-info">TEST</div>
-        <div class="col bg-success">TEST</div>
-        <div class="col bg-danger">TEST</div>
-        <div class="col bg-dark">TEST</div>
-        <div class="col bg-info">TEST</div>
-
-    </div>
-    <div class="row text-center bg-success">
-        <div class="col bg-info">TEST</div>
-        <div class="col bg-success">TEST</div>
-        <div class="col bg-danger">TEST</div>
-        <div class="col bg-dark">TEST</div>
-        <div class="col bg-info">TEST</div>
-
-    </div>
-
-    <div class="row text-center">
-        <div class="col-2 bg-info border border-success" *ngFor="let text of random; let ind = index">{{text}}-{{ind}}</div>
-    </div>
-
-
-
-
-
-
-
+    </body>
 </section>
-    <button class="btn btn-outline-success mx-5 px-5" (click)="onClick()">
-        <mat-icon >home</mat-icon>
-    </button>

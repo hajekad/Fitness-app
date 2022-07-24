@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { CountdownConfig } from 'ngx-countdown';
 
 @Component({
   selector: 'app-track',
@@ -16,7 +16,6 @@ export class TrackComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   navText:string;
   random:string[];
 

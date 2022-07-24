@@ -9,7 +9,23 @@
     color: white;
     background-color: blueviolet;
 }
+#MainBody{
+    background-color: darkviolet;
+}
 
 #content-2{
     border-margin:50px;
+}
+
+.countdown {
+  border: 2px solid red;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#Home{
+    float: right;
+    align-self: right;
+    align-items: right;
 }

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-simple-countdown": "^13.0.1"
+  }
+}

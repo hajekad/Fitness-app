@@ -1,27 +1,46 @@
 <section id="content-wrapper" class="container-fluid">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <button class="btn btn-outline-info mx-5 px-5" type="button" (click)="onClick()" id="Home">
+    <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <button class="btn btn-outline-danger mx-5 px-5" type="button" (click)="onClick()" id="Home">
             <mat-icon >home</mat-icon>
         </button>
     </nav>
 
     <body id="MainBody">
-        <div class="TrackModule" align="center">
-            <circle-progress
-              [percent]="85"
-              [radius]="100"
-              [outerStrokeWidth]="16"
-              [innerStrokeWidth]="8"
-              [outerStrokeColor]="'#880808'"
-              [innerStrokeColor]="'#C7E596'"
-              [animation]="true"
-              [animationDuration]="300"
-            ></circle-progress>
+        <div id="progress" (change)="getPercent()" class="TrackModule" align="center">
+            <div #ci id="circle">
+                <circle-progress
+                [radius]="100"
+                [outerStrokeWidth]="16"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="'#880808'"
+                [innerStrokeColor]="'#FFFFFF'"
+                [animation]="true"
+                [animationDuration]="300"
+                [showImage]="true"
+                [percent]="getPercent()"
+                >
+                </circle-progress>
+
+                {{getPercent()}}
+            </div>
+
+            <img id="heart" [src]="LogoPath" alt="logo">
+            
         </div>
-        
-        <div class="Timer" align="center">
-            <countdown #cd></countdown>
-        </div>
+
+        <h1 id="Timer" class="Timer text-white" align="center">
+            <countdown class="count-down" #counter [config]="{ leftTime: 360, demand: true }"></countdown>
+        </h1>
+
+        <section id="buttons" class="container" align="center">
+            <button (click)="onStart(counter)" id="button" class="button start">
+                <span class="material-icons md-light">arrow_forward_ios</span>
+            </button>
+
+            <button (click)="resetTimer()" id="button" class="button start">
+                <span class="material-icons md-light">restart_alt</span>
+            </button>
+        </section>
 
     </body>
 </section>

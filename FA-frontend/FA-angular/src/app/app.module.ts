@@ -9,10 +9,14 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { TrackComponent } from './track/track.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIconModule} from '@angular/material/icon';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { CountdownModule } from 'ngx-countdown';
+import { CountdownConfig, CountdownGlobalConfig, CountdownModule } from 'ngx-countdown';
+import { materialize } from 'rxjs';
 
+function countdownConfigFactory(): CountdownConfig {
+  return { format: `mm:ss` };
+}
 
 @NgModule({
   declarations: [
@@ -39,17 +43,17 @@ import { CountdownModule } from 'ngx-countdown';
       "outerStrokeWidth": 10,
       "outerStrokeColor": "#c2474e",
       "outerStrokeGradientStopColor": "#000000",
-      "innerStrokeColor": "#e7e8ea",
+      "innerStrokeColor": "#FFFFFF",
       "innerStrokeWidth": 10,
-      "title": "UI",
+      "title": "",
       "animationDuration": 2700,
       "showUnits": false,
       "showBackground": false,
       "clockwise": false,
       "startFromZero": false,
-      "lazy": true})
+      "lazy": false})
   ],
-  providers: [CookieService],
+  providers: [CookieService,{ provide: CountdownGlobalConfig, useFactory: countdownConfigFactory }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

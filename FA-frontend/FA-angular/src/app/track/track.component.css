@@ -1,7 +1,3 @@
-/* *{
-    background-color: blueviolet;
-} */
-
 #nav{
     width: 100vw;
     margin-right: 0;
@@ -13,23 +9,21 @@
     background-color: rgba(114, 114, 114,0.2);
 }
 
-#content-2{
-    border-margin:50px;
-}
-
 #progress{
     align-items: center;
 }
 
-.circle{
+#circle{
     z-index:1;
 }
 
-.heart{
-    position: absolute; top: 100cm;
+#heart{
+    position: sticky;
+    top: 20%;
     width: 100%;
     height: 100%;
-    z-index:0;
+    z-index:1;
+    margin-top: -95%;
 }
 
 #buttons{

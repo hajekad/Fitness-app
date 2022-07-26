@@ -1,4 +1,4 @@
-import { Component, NgModule, OnChanges, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, NgModule, OnChanges, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
@@ -19,7 +19,7 @@ function countdownConfigFactory(): CountdownConfig {
 export class TrackComponent {
 
   constructor( private router:Router ) { 
-    this.LogoPath = 'logoBIG.png';
+    this.LogoPath = './materials/logoBIG.png';
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class TrackComponent {
     if(this.counter == null)
       return 100;
 
-    return this.counter.left / 3600;
+    return Math.floor(this.counter.left / 3600);
   }
   
   LogoPath: string;
@@ -41,7 +41,6 @@ export class TrackComponent {
   onStart(src: CountdownComponent):void{
     this.counter = src;
     src.begin();
-    this.counter.begin();    
   }
 
   resetTimer(){
@@ -56,5 +55,12 @@ export class TrackComponent {
 
   onClick():void{
     this.router.navigate(['main']);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    var x = document.getElementById("percent");
+
+    if(x != null)
+      x.innerHTML = ("{{this.getPercent}}");
   }
 }

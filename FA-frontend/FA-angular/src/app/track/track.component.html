@@ -1,6 +1,6 @@
 <section id="content-wrapper" class="container-fluid">
     <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <button class="btn btn-outline-danger mx-5 px-5" type="button" (click)="onClick()" id="Home">
+        <button class="btn btn-outline-danger mx-1" type="button" (click)="onClick()" id="Home">
             <mat-icon >home</mat-icon>
         </button>
     </nav>
@@ -17,12 +17,16 @@
                 [animation]="true"
                 [animationDuration]="300"
                 [showImage]="true"
+                [imageSrc]="LogoPath"
                 [percent]="getPercent()"
                 >
                 </circle-progress>
 
-                {{getPercent()}}
             </div>
+            
+            <p id="percent">
+                {{getPercent()}}
+            </p>
 
             <img id="heart" [src]="LogoPath" alt="logo">
             

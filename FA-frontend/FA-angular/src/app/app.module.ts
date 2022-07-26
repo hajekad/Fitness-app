@@ -32,26 +32,7 @@ function countdownConfigFactory(): CountdownConfig {
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    NgCircleProgressModule.forRoot({
-      "backgroundOpacity": 0.8,
-      "backgroundPadding": 12,
-      "radius": 102,
-      "space": -10,
-      "toFixed": 0,
-      "maxPercent": 100,
-      "outerStrokeGradient": true,
-      "outerStrokeWidth": 10,
-      "outerStrokeColor": "#c2474e",
-      "outerStrokeGradientStopColor": "#000000",
-      "innerStrokeColor": "#FFFFFF",
-      "innerStrokeWidth": 10,
-      "title": "",
-      "animationDuration": 2700,
-      "showUnits": false,
-      "showBackground": false,
-      "clockwise": false,
-      "startFromZero": false,
-      "lazy": false})
+    NgCircleProgressModule.forRoot()
   ],
   providers: [CookieService,{ provide: CountdownGlobalConfig, useFactory: countdownConfigFactory }],
   bootstrap: [AppComponent]

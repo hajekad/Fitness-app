@@ -10,19 +10,31 @@ function countdownConfigFactory(): CountdownConfig {
   selector: 'app-track',
   templateUrl: './track.component.html',
   styleUrls: ['./track.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
+
   host: {
     '[class.card]': `false`,
     '[class.text-center]': `false`,
   }
 })
-export class TrackComponent {
+export class TrackComponent implements AfterViewInit{
 
   constructor( private router:Router ) { 
-    this.LogoPath = './materials/logoBIG.png';
+    this.percentLeft = 100;
   }
 
   ngOnInit(): void {
+  }
+
+  public percentLeft:number;
+
+  ngAfterViewInit(){
+
+    setInterval(()=>{
+      this.percentLeft = this.getPercent();
+    }, 1000)
+
   }
 
   getPercent():number{
@@ -32,7 +44,11 @@ export class TrackComponent {
     return Math.floor(this.counter.left / 3600);
   }
   
-  LogoPath: string;
+  // loading circle variables
+  public outerStroke:string = "#FF0000";
+  public outerStrokeGradientStop:string = "#000000";
+  public innerStroke:string = "#FFFFFF";
+  public tit:string = '';
 
   status = 'start';
   @ViewChild('countdown')
@@ -41,6 +57,7 @@ export class TrackComponent {
   onStart(src: CountdownComponent):void{
     this.counter = src;
     src.begin();
+    
   }
 
   resetTimer(){

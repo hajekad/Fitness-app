@@ -1,6 +1,7 @@
 import { Component, NgModule, OnChanges, OnInit, ViewEncapsulation, AfterViewInit, ViewChild, ElementRef, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
+import { LocationService } from '../services/location.service';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -20,19 +21,34 @@ function countdownConfigFactory(): CountdownConfig {
 })
 export class TrackComponent implements AfterViewInit{
 
-  constructor( private router:Router ) { 
+  constructor( private router:Router, private locationService:LocationService ) { 
     this.percentLeft = 100;
+    this.activator = 0;
   }
 
   ngOnInit(): void {
   }
 
   public percentLeft:number;
+  private activator:number;
 
   ngAfterViewInit(){
-
-    setInterval(()=>{
+    const inter = setInterval(()=>{
       this.percentLeft = this.getPercent();
+
+      if(this.activator % 5 == 0)
+      {
+        this.activator = 0;
+        this.locationService.getPosition().then(pos=>
+        {
+           console.log(`Positon: ${pos.lng} ${pos.lat}`);
+        });
+      }
+      
+      this.activator++;
+
+      if(this.percentLeft == 0)
+        clearInterval(inter);
     }, 1000)
 
   }

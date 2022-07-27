@@ -8,24 +8,6 @@
     <div id="MainBody">
         <div id="progress" (change)="getPercent()" class="TrackModule">
             <div class="circle-wrapper">
-
-                <!-- <div #ci id="circle">
-                    <circle-progress
-                    [radius]="100"
-                    [outerStrokeWidth]="16"
-                    [innerStrokeWidth]="8"
-                    [outerStrokeColor]="'#880808'"
-                    [innerStrokeColor]="'#FFFFFF'"
-                    [animation]="true"
-                    [animationDuration]="300"
-                    [showImage]="true"
-                    [percent]="getPercent()"
-                    #circle 
-                    >
-                    </circle-progress>
-    
-                </div> -->
-
                 <div #ci id="circle">
                     <circle-progress
                     [backgroundOpacity]= "0.8"
@@ -68,9 +50,9 @@
         </div>
 
         <div class="content">
-
-            <!-- sem jebat obsah -->
-
+            <h2 id="Timer" class="Timer text-white" align="center">
+                {{currDist}}
+            </h2>
         </div>
 
         <section id="buttons" class="container-fluid" align="center">

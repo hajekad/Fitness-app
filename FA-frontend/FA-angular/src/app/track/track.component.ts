@@ -19,18 +19,34 @@ function countdownConfigFactory(): CountdownConfig {
     '[class.text-center]': `false`,
   }
 })
-export class TrackComponent implements AfterViewInit{
+export class TrackComponent implements AfterViewInit{  
+  // loading circle variables
+  public outerStroke:string = "#FF0000";
+  public outerStrokeGradientStop:string = "#000000";
+  public innerStroke:string = "#FFFFFF";
+  public tit:string = '';
+
+  public currDist:number;
+  public percentLeft:number;
+  
+  private lat:number;
+  private long:number;
+  private activator:number;
+
+  status = 'start';
+  @ViewChild('countdown')
+  counter!: CountdownComponent;
 
   constructor( private router:Router, private locationService:LocationService ) { 
     this.percentLeft = 100;
     this.activator = 0;
+    this.lat = 0;
+    this.long = 0;
+    this.currDist = 0;
   }
 
   ngOnInit(): void {
   }
-
-  public percentLeft:number;
-  private activator:number;
 
   ngAfterViewInit(){
     const inter = setInterval(()=>{
@@ -42,13 +58,17 @@ export class TrackComponent implements AfterViewInit{
         this.locationService.getPosition().then(pos=>
         {
            console.log(`Positon: ${pos.lng} ${pos.lat}`);
+           this.currDist += this.getDistance(pos.lng, pos.lat);
         });
       }
       
       this.activator++;
 
       if(this.percentLeft == 0)
+      {
+        console.log(`Distance traveled: ${this.currDist}`);
         clearInterval(inter);
+      }
     }, 1000)
 
   }
@@ -59,16 +79,33 @@ export class TrackComponent implements AfterViewInit{
 
     return Math.floor(this.counter.left / 3600);
   }
-  
-  // loading circle variables
-  public outerStroke:string = "#FF0000";
-  public outerStrokeGradientStop:string = "#000000";
-  public innerStroke:string = "#FFFFFF";
-  public tit:string = '';
 
-  status = 'start';
-  @ViewChild('countdown')
-  counter!: CountdownComponent;
+  getDistance(long:number, lat:number):number
+  {
+    if(this.lat === 0 && this.long === 0)
+    {
+      this.lat = lat;
+      this.long = long;
+
+      return 0;
+    }
+
+    const R = 6371e3; // metres
+    const φ1 = this.lat * Math.PI/180; // φ, λ in radians
+    const φ2 = lat * Math.PI/180;
+    const Δφ = (lat-this.lat) * Math.PI/180;
+    const Δλ = (long-this.long) * Math.PI/180;
+      
+    const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+              Math.cos(φ1) * Math.cos(φ2) *
+              Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    this.lat = lat;
+    this.long = long;
+      
+    return R * c; // in metres
+  }
 
   onStart(src: CountdownComponent):void{
     this.counter = src;
@@ -80,20 +117,7 @@ export class TrackComponent implements AfterViewInit{
     this.counter.restart();
   }
 
-  finishTest() {
-    console.log("count down", this.counter);
-    this.status = 'finished';
-    this.counter.restart();
-  }
-
   onClick():void{
     this.router.navigate(['main']);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    var x = document.getElementById("percent");
-
-    if(x != null)
-      x.innerHTML = ("{{this.getPercent}}");
   }
 }

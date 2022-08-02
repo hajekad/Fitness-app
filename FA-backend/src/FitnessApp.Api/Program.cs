@@ -1,3 +1,5 @@
+using FitnessApp.ApplicationLayer.Services.Abstractions;
+using FitnessApp.ApplicationLayer.Services.Implementations;
 using FitnessApp.InterfaceLayer.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//services
+builder.Services.AddTransient<IUserService, UserService>();
 
 // mapping
 builder.Services.AddAutoMapper(typeof(MappingProfile));

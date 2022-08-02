@@ -10,12 +10,9 @@
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FitnessApp.ApplicationLayer\FitnessApp.ApplicationLayer.csproj" />
       <ProjectReference Include="..\FitnessApp.InterfaceLayer\FitnessApp.InterfaceLayer.csproj" />
     </ItemGroup>
 

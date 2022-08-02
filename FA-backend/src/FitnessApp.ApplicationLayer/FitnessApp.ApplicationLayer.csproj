@@ -6,4 +6,14 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FitnessApp.DomainLayer\FitnessApp.DomainLayer.csproj" />
+      <ProjectReference Include="..\FitnessApp.InfrastructureLayer\FitnessApp.InfrastructureLayer.csproj" />
+      <ProjectReference Include="..\FitnessApp.InterfaceLayer\FitnessApp.InterfaceLayer.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0-preview.6.22324.4" />
+    </ItemGroup>
+
 </Project>

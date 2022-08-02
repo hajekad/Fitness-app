@@ -7,8 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Storage\Abstractions" />
-      <Folder Include="Storage\Implementations" />
+      <ProjectReference Include="..\FitnessApp.DomainLayer\FitnessApp.DomainLayer.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql" Version="7.0.0-preview.6" />
     </ItemGroup>
 
 </Project>

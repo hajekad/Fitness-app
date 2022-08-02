@@ -13,8 +13,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Dtos\Classes" />
-      <Folder Include="Dtos\Enums" />
+      <Folder Include="Dtos\Classes\Walk" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FitnessApp.DomainLayer\FitnessApp.DomainLayer.csproj" />
     </ItemGroup>
 
 </Project>

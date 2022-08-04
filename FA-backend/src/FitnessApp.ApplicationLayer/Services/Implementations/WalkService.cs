@@ -31,7 +31,7 @@ public class WalkService : IWalkService
         return ret;
     }
 
-    public SimpleWalkDtoList GetWalksRelatedTo(Int32 idUser)
+    public SimpleWalkDtoList GetWalksRelatedTo(int idUser)
     {
         SimpleWalkDtoList ret;
         

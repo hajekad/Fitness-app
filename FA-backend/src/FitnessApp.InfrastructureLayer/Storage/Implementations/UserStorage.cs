@@ -16,7 +16,7 @@ public class UserStorage : IUserStorage
         con.Open();
     }
     
-    public Int32 CreateUser(User userModel)
+    public int CreateUser(User userModel)
     {
         string sql = $"insert into \"user\" (sex, educational_attainment, birth_year) values ('{userModel._sex}', '{userModel._edu}', {userModel._birthYear})";
 

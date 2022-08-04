@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Data;
 using FitnessApp.DomainLayer.Models;
 using FitnessApp.InfrastructureLayer.Storage.Abstractions;
 using Npgsql;
@@ -33,6 +35,18 @@ public class WalkStorage : IWalkStorage
 
     public List<Walk> GetWalksRelatedTo(int idUser)
     {
-        throw new NotImplementedException();
+        string sql = $"SELECT Distinct * FROM walk WHERE id_user = {idUser}";
+
+        using var cmd = new NpgsqlCommand(sql, con);
+
+        List<Walk> ret = new List<Walk>();
+        
+        using (var reader = cmd.ExecuteReader()) {
+
+            foreach (IDataRecord record in reader as IEnumerable)
+                ret.Add(new Walk(record));
+        }
+        
+        return ret;
     }
 }

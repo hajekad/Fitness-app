@@ -41,7 +41,7 @@ public class WalkController : ControllerBase
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [HttpGet]
-    public IActionResult GetWalksRealatedTo([FromRoute] Int32 idUser)
+    public IActionResult GetWalksRealatedTo([FromHeader] int idUser)
     {
         SimpleWalkDtoList ret;
         

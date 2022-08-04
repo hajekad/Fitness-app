@@ -24,7 +24,7 @@ public class UserStorage : IUserStorage
         
         cmd.ExecuteScalar();
         
-        string retSql = $"SELECT nextval('user_id_user_seq');";
+        string retSql = $"SELECT currval('user_id_user_seq');";
 
         using var cmdRet = new NpgsqlCommand(retSql, con);
 

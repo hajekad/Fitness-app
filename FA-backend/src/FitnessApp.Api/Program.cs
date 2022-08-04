@@ -16,9 +16,11 @@ builder.Services.AddSwaggerGen();
 
 //storage
 builder.Services.AddSingleton<IUserStorage, UserStorage>();
+builder.Services.AddSingleton<IWalkStorage, WalkStorage>();
 
 //services
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IWalkService, WalkService>();
 
 // mapping
 builder.Services.AddAutoMapper(typeof(MappingProfile));

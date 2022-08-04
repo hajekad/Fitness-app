@@ -14,5 +14,6 @@ public class MappingProfile : Profile
         
         //walks
         CreateMap<SimpleWalkDto, Walk>().ReverseMap();
+        CreateMap<List<Walk>, SimpleWalkDtoList>().ForMember(dest => dest._repo, (expression => expression.MapFrom(m => m)));
     } 
 }

@@ -18,16 +18,21 @@ public class WalkStorage : IWalkStorage
     
     public int CreateWalk(Walk walkModel)
     {
-        string sql = $"insert into \"walk\" (id_user, date, distance, start_lat, start_long, end_lat, end_long) values ({walkModel._user_id}, {walkModel._date}, {walkModel._distance}, {walkModel._startLat}, {walkModel._startLong}, {walkModel._endLat}, {walkModel._endLong})";
+        string sql = $"insert into \"walk\" (id_user, date, distance, start_lat, start_long, end_lat, end_long) values ({walkModel._user_id}, '{walkModel._date.Year}-{walkModel._date.Month}-{walkModel._date.Day}', {walkModel._distance}, {walkModel._startLat}, {walkModel._startLong}, {walkModel._endLat}, {walkModel._endLong})";
 
         using var cmd = new NpgsqlCommand(sql, con);
         
         cmd.ExecuteScalar();
         
-        string retSql = $"SELECT nextval('walk_id_walk_seq');";
+        string retSql = $"SELECT currval('walk_id_walk_seq');";
 
         using var cmdRet = new NpgsqlCommand(retSql, con);
 
         return Int32.Parse(cmdRet.ExecuteScalar().ToString());
+    }
+
+    public List<Walk> GetWalksRelatedTo(int idUser)
+    {
+        throw new NotImplementedException();
     }
 }

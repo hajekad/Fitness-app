@@ -31,8 +31,22 @@ public class WalkService : IWalkService
         return ret;
     }
 
-    public List<SimpleWalkDto> GetWaksRelatedTo(Int32 id)
+    public SimpleWalkDtoList GetWalksRelatedTo(Int32 idUser)
     {
-        throw new NotImplementedException();
+        SimpleWalkDtoList ret;
+        
+        try
+        {
+            List<Walk> models = _walkRepository.GetWalksRelatedTo(idUser);
+            
+            ret = _mapper.Map<SimpleWalkDtoList>(models); 
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw e;
+        }
+
+        return ret;
     }
 }

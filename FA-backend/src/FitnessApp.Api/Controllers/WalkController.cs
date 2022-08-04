@@ -38,11 +38,23 @@ public class WalkController : ControllerBase
         return Created(ret.ToString(), tmp);
     }
     
-    [ProducesResponseType(typeof(Int32), 200)]
+    [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [HttpGet]
-    public IActionResult GetWaksRealatedTo([FromRoute] Int32 id_user)
+    public IActionResult GetWalksRealatedTo([FromRoute] Int32 idUser)
     {
-        return Ok();
+        SimpleWalkDtoList ret;
+        
+        try
+        {
+            ret = _service.GetWalksRelatedTo(idUser);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return NotFound(e.Message);
+        }
+        
+        return Ok(ret);
     }
 }

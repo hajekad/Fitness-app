@@ -13,17 +13,17 @@ public class UserService : IUserService
     private readonly ILogger <IUserService> _logger;
     private readonly IMapper _mapper;
 
-    public UserService(ILogger<IUserService> logger, IMapper mapper)
+    public UserService(ILogger<IUserService> logger, IMapper mapper, IUserStorage userRepository)
     {
         _logger = logger;
         _mapper = mapper;
+        _userRepository = userRepository;
     }
     
-    public Guid? CreateUser(CreateUserDto dto)
+    public int CreateUser(CreateUserDto dto)
     {
         var model = _mapper.Map<User>(dto);
-        model._id = Guid.NewGuid();
-
+        
         try
         {
             model.Validate();
@@ -33,10 +33,11 @@ public class UserService : IUserService
             _logger.LogInformation($"{e.Message}");
             throw e;
         }
-
-        _userRepository.CreateUser(model);
-        _logger.LogInformation($"User with number {model._id} was created.");
         
-        return model._id;
+        int ret = _userRepository.CreateUser(model);
+        
+        _logger.LogInformation($"User with id {ret} was created.");
+
+        return ret;
     }
 }

@@ -3,11 +3,11 @@ using FitnessApp.DomainLayer.Models.Abstractions;
 
 namespace FitnessApp.DomainLayer.Models;
 
-public class User : BaseIdModel
+public class User
 {
     public UserSex _sex { get; set; }
     public EduAttainment _edu { get; set; }
-    public DateTime _birth { get; set; }
+    public int _birthYear { get; set; }
     
     public bool? _athlete { get; set; }
     public bool? _smoker { get; set; }
@@ -15,7 +15,7 @@ public class User : BaseIdModel
 
     public void Validate()
     {
-        if (_birth > DateTime.Now)
-            throw new Exception($"Birth date {_birth.ToString()} is invalid.");
+        if (_birthYear > DateTime.Now.Year)
+            throw new Exception($"Birth date {_birthYear} is invalid.");
     }
 }

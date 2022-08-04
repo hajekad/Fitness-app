@@ -17,12 +17,14 @@ public class UserController : ControllerBase
         _service = service;
     }
 
-    [ProducesResponseType(typeof(Guid), 200)]
+    [ProducesResponseType(typeof(CreatedResult), 201)]
     [ProducesResponseType(400)]
     [HttpPost]
-    public ActionResult<Guid> CreateUser([FromBody] CreateUserDto dto)
+    public IActionResult CreateUser([FromBody] CreateUserDto dto)
     {
-        Guid? ret = null;
+        int ret = -1;
+        var tmp = dto;
+        
         try
         {
             ret = _service.CreateUser(dto);
@@ -33,6 +35,6 @@ public class UserController : ControllerBase
             return BadRequest();
         }
             
-        return Ok(ret);
+        return Created(ret.ToString(), dto);
     }
 }

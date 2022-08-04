@@ -4,27 +4,27 @@ using Npgsql;
 
 namespace FitnessApp.InfrastructureLayer.Storage.Implementations;
 
-public class UserStorage : IUserStorage
+public class WalkStorage : IWalkStorage
 {
     private const string cs = "Host=localhost;Username=postgres;Password=' ';Database=minutyprozd";
     private NpgsqlConnection con;
-    
-    public UserStorage()
+
+    public WalkStorage()
     {
         con = new NpgsqlConnection(cs);
        
         con.Open();
     }
     
-    public Int32 CreateUser(User userModel)
+    public int CreateWalk(Walk walkModel)
     {
-        string sql = $"insert into \"user\" (sex, educational_attainment, birth_year) values ('{userModel._sex}', '{userModel._edu}', {userModel._birthYear})";
+        string sql = $"insert into \"walk\" (id_user, date, distance, start_lat, start_long, end_lat, end_long) values ({walkModel._user_id}, {walkModel._date}, {walkModel._distance}, {walkModel._startLat}, {walkModel._startLong}, {walkModel._endLat}, {walkModel._endLong})";
 
         using var cmd = new NpgsqlCommand(sql, con);
         
         cmd.ExecuteScalar();
         
-        string retSql = $"SELECT nextval('user_id_user_seq');";
+        string retSql = $"SELECT nextval('walk_id_walk_seq');";
 
         using var cmdRet = new NpgsqlCommand(retSql, con);
 

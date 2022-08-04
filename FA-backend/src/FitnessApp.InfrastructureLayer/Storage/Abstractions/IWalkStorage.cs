@@ -2,7 +2,7 @@ using FitnessApp.DomainLayer.Models;
 
 namespace FitnessApp.InfrastructureLayer.Storage.Abstractions;
 
-public interface IUserStorage
+public interface IWalkStorage
 {
-    Int32 CreateUser(User userModel);
+    int CreateWalk(Walk walkModel);
 }

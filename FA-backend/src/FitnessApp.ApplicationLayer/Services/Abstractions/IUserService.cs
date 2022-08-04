@@ -4,5 +4,5 @@ namespace FitnessApp.ApplicationLayer.Services.Abstractions;
 
 public interface IUserService
 {
-    Guid? CreateUser(CreateUserDto dto);
+    int CreateUser(CreateUserDto dto);
 }

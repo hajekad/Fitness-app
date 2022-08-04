@@ -9,7 +9,6 @@
 + get walks where age of users is in range date1 - date 2
 ## Objects
 ### Walk
-    guid: id
     User: user
     date: date fo walk
     number: distance
@@ -17,7 +16,6 @@
     Coordinates: end
 ### User
 #### non-nullable:
-    guid: id
     enum: sex: Male / Female
     date: birth date: YYYY-MM-DD
     enum: educational attainment: ZS, SS, VS 

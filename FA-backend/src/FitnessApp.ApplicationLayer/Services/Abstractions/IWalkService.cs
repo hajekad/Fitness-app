@@ -6,5 +6,5 @@ public interface IWalkService
 {
     Int32 CreateWalk(SimpleWalkDto dto);
 
-    SimpleWalkDtoList GetWalksRelatedTo(Int32 idUser);
+    SimpleWalkDtoList GetWalksRelatedTo(int idUser);
 }

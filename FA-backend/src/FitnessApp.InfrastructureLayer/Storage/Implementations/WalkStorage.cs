@@ -35,18 +35,30 @@ public class WalkStorage : IWalkStorage
 
     public List<Walk> GetWalksRelatedTo(int idUser)
     {
+        List<Walk> ret = new List<Walk>();
+
         string sql = $"SELECT Distinct * FROM walk WHERE id_user = {idUser}";
 
         using var cmd = new NpgsqlCommand(sql, con);
 
-        List<Walk> ret = new List<Walk>();
-        
-        using (var reader = cmd.ExecuteReader()) {
+        cmd.CommandType = CommandType.Text;
 
-            foreach (IDataRecord record in reader as IEnumerable)
-                ret.Add(new Walk(record));
+        using (var reader = cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                ret.Add
+                (
+                    new Walk
+                        (
+                            Int32.Parse(reader["id_user"].ToString()), Int32.Parse(reader["distance"].ToString()),
+                            Int32.Parse(reader["start_lat"].ToString()), Int32.Parse(reader["start_long"].ToString()),
+                            Int32.Parse(reader["end_lat"].ToString()), Int32.Parse(reader["end_long"].ToString())
+                        )
+                );
+            }
         }
-        
+
         return ret;
     }
 }

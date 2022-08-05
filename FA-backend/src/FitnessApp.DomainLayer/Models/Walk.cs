@@ -19,18 +19,13 @@ public class Walk
         
     }
 
-    public Walk(IDataRecord src)
+    public Walk(int idUser, int distance, int startLat, int startLong, int endLat, int endLong)
     {
-        _user_id = Int32.Parse(src.GetValue(_user_id).ToString());
-        
-        //_date = new DateTime(src.GetValue(_user_id).ToString());
-        
-        _distance = Int32.Parse(src.GetValue(_distance).ToString());
-        
-        _startLat = Int32.Parse(src.GetValue(_startLat).ToString());
-        _startLong = Int32.Parse(src.GetValue(_startLong).ToString());
-        
-        _endLat = Int32.Parse(src.GetValue(_endLat).ToString());
-        _endLong = Int32.Parse(src.GetValue(_endLong).ToString());
+        _user_id = idUser;
+        _distance = distance;
+        _startLat = startLat;
+        _startLong = startLong;
+        _endLat = endLat;
+        _endLong = endLong;
     }
 }

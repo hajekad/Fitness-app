@@ -5,7 +5,7 @@ import { MainComponent } from './main/main.component';
 import { TrackComponent } from './track/track.component';
 
 const routes: Routes = [
-  { path:'', redirectTo:'login', pathMatch: 'full' }, // automatic redirection to login  
+  { path:'', redirectTo:'track', pathMatch: 'full' }, // automatic redirection to login  
   { path:'login', title:'login', component: LoginComponent},
   { path:'track', title:'track', component: TrackComponent},
   { path:'main', title:'main', component: MainComponent },

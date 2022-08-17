@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendApiService } from '../services/backend-api.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private backend: BackendApiService) { }
 
   ngOnInit(): void {
+  }
+
+  getWalks()
+  {
+    let id: number = 1;
+
+    this.backend.getWalks(id);
   }
 
 }

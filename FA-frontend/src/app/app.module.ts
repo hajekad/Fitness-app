@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -9,10 +8,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { TrackComponent } from './track/track.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CountdownConfig, CountdownGlobalConfig, CountdownModule } from 'ngx-countdown';
-import { materialize } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -23,10 +22,12 @@ function countdownConfigFactory(): CountdownConfig {
     AppComponent,
     LoginComponent,
     MainComponent,
-    TrackComponent
+    TrackComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
+    HttpClientModule,
     CountdownModule,
     AppRoutingModule,
     FormsModule,

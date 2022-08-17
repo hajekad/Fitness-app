@@ -4,7 +4,7 @@ namespace FitnessApp.ApplicationLayer.Services.Abstractions;
 
 public interface IWalkService
 {
-    Int32 CreateWalk(SimpleWalkDto dto);
+    Int32 CreateWalk(CreateWalkDto dto);
 
     SimpleWalkDtoList GetWalksRelatedTo(int idUser);
 }

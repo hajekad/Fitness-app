@@ -21,6 +21,8 @@ public class Walk
 
     public Walk(int idUser, int distance, int startLat, int startLong, int endLat, int endLong)
     {
+        Console.WriteLine($"idUser: {idUser} distance: {distance} startLat: {startLat} startLong: {startLong} endLat: {endLat} endLong: {endLong}");
+        
         _user_id = idUser;
         _distance = distance;
         _startLat = startLat;

@@ -1,11 +1,13 @@
 using FitnessApp.ApplicationLayer.Services.Abstractions;
 using FitnessApp.InterfaceLayer.Dtos.Classes.User;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FitnessApp.Api.Controllers;
 
-[ApiController]
 [Route("api/users")]
+[ApiController]
+[EnableCors("AllowMyOrigin")]
 public class UserController : ControllerBase
 {
     private readonly ILogger<UserController> _logger;
@@ -20,7 +22,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(typeof(CreatedResult), 201)]
     [ProducesResponseType(400)]
     [HttpPost]
-    public IActionResult CreateUser([FromBody] CreateUserDto dto)
+    public IActionResult Post([FromBody] CreateUserDto dto)
     {
         int ret = -1;
         var tmp = dto;

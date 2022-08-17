@@ -20,7 +20,7 @@ public class WalkService : IWalkService
         _walkRepository = walkRepository;
     }
     
-    public int CreateWalk(SimpleWalkDto dto)
+    public int CreateWalk(CreateWalkDto dto)
     {
         var model = _mapper.Map<Walk>(dto);
         
@@ -43,7 +43,7 @@ public class WalkService : IWalkService
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogInformation(e.Message);
             throw e;
         }
 

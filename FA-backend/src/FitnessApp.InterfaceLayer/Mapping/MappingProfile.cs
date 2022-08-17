@@ -13,7 +13,8 @@ public class MappingProfile : Profile
         CreateMap<CreateUserDto, User>();
         
         //walks
-        CreateMap<SimpleWalkDto, Walk>().ReverseMap();
+        CreateMap<Walk, SimpleWalkDto>();
+        CreateMap<CreateWalkDto, Walk>();
         CreateMap<List<Walk>, SimpleWalkDtoList>().ForMember(dest => dest._repo, (expression => expression.MapFrom(m => m)));
     } 
 }

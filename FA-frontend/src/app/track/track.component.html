@@ -45,13 +45,13 @@
             
             
             <h1 id="Timer" class="Timer text-white" align="center">
-                <countdown class="count-down" #counter [config]="{ leftTime: 360, demand: true }"></countdown>
+                <countdown class="count-down" #counter [config]="{ leftTime: timeToTrack, demand: true }"></countdown>
             </h1>
         </div>
 
         <div class="content">
             <h2 id="Timer" class="Timer text-white" align="center">
-                {{currDist}}
+                {{currWalk._distance}}
             </h2>
         </div>
 

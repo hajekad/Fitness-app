@@ -2,6 +2,8 @@ import { Component, NgModule, OnChanges, OnInit, ViewEncapsulation, AfterViewIni
 import { Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 import { LocationService } from '../services/location.service';
+import { BackendApiService } from '../services/backend-api.service';
+import { WalkModel } from '../walk-model';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -26,23 +28,27 @@ export class TrackComponent implements AfterViewInit{
   public innerStroke:string = "#FFFFFF";
   public tit:string = '';
 
-  public currDist:number;
+  public currWalk: WalkModel;
   public percentLeft:number;
-  
+  public timeToTrack:number = 20;
+   
   private lat:number;
   private long:number;
   private activator:number;
+  private tracking:boolean;
 
   status = 'start';
   @ViewChild('countdown')
   counter!: CountdownComponent;
 
-  constructor( private router:Router, private locationService:LocationService ) { 
+  constructor( private router:Router, private locationService:LocationService, private backendService:BackendApiService) { 
     this.percentLeft = 100;
     this.activator = 0;
     this.lat = 0;
     this.long = 0;
-    this.currDist = 0;
+    this.tracking = false;
+    this.currWalk = new WalkModel(1);
+
   }
 
   ngOnInit(): void {
@@ -52,23 +58,28 @@ export class TrackComponent implements AfterViewInit{
     const inter = setInterval(()=>{
       this.percentLeft = this.getPercent();
 
-      if(this.activator % 5 == 0)
+      if(this.tracking)
       {
-        this.activator = 0;
-        this.locationService.getPosition().then(pos=>
+        if(this.activator % 5 == 0)
         {
-           console.log(`Positon: ${pos.lng} ${pos.lat}`);
-           this.currDist += this.getDistance(pos.lng, pos.lat);
-        });
+
+          this.activator = 0;
+          this.locationService.getPosition().then(pos=>
+            {
+              console.log(`Positon: ${pos.lng} ${pos.lat}`);
+              this.currWalk._distance += this.getDistance(pos.lng, pos.lat);
+            });
+        }
+
+        if(this.percentLeft == 0)
+        {
+          this.backendService.postWalk(this.currWalk);
+          console.log(`Distance traveled: ${this.currWalk._distance}`);
+          this.tracking = false;
+        }
       }
       
       this.activator++;
-
-      if(this.percentLeft == 0)
-      {
-        console.log(`Distance traveled: ${this.currDist}`);
-        clearInterval(inter);
-      }
     }, 1000)
 
   }
@@ -77,7 +88,7 @@ export class TrackComponent implements AfterViewInit{
     if(this.counter == null)
       return 100;
 
-    return Math.floor(this.counter.left / 3600);
+    return Math.floor(this.counter.left / (this.timeToTrack * 10));
   }
 
   getDistance(long:number, lat:number):number
@@ -104,17 +115,19 @@ export class TrackComponent implements AfterViewInit{
     this.lat = lat;
     this.long = long;
       
-    return R * c; // in metres
+    return Math.floor(R * c); // in metres
   }
 
   onStart(src: CountdownComponent):void{
     this.counter = src;
     src.begin();
-    
+    this.tracking = true;    
   }
 
   resetTimer(){
     this.counter.restart();
+    this.tracking = false;
+    this.currWalk = new WalkModel(0);
   }
 
   onClick():void{

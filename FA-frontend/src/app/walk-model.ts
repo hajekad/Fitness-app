@@ -1,13 +1,49 @@
 export class WalkModel
 {
-    public _user_id: number;
-    public _distance: number;
-    public _startLat: number;
-    public _startLong: number;
-    public _endLat: number;
-    public _endLong: number;
+    private _user_id: number;
+    public get user_id(): number {
+        return this._user_id;
+    }
+    public set user_id(value: number) {
+        this._user_id = value;
+    }
+    private _distance: number;
+    public get distance(): number {
+        return this._distance;
+    }
+    public set distance(value: number) {
+        this._distance = value;
+    }
+    private _startLat: number;
+    public get startLat(): number {
+        return this._startLat;
+    }
+    public set startLat(value: number) {
+        this._startLat = value;
+    }
+    private _startLong: number;
+    public get startLong(): number {
+        return this._startLong;
+    }
+    public set startLong(value: number) {
+        this._startLong = value;
+    }
+    private _endLat: number;
+    public get endLat(): number {
+        return this._endLat;
+    }
+    public set endLat(value: number) {
+        this._endLat = value;
+    }
+    private _endLong: number;
+    public get endLong(): number {
+        return this._endLong;
+    }
+    public set endLong(value: number) {
+        this._endLong = value;
+    }
 
-    constructor(_user_id: number)
+    constructor(_user_id: number = 0)
     {
         this._user_id = _user_id;
         this._distance = 0;

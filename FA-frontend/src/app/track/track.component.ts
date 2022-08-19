@@ -30,7 +30,7 @@ export class TrackComponent implements AfterViewInit{
 
   public currWalk: WalkModel;
   public percentLeft:number;
-  public timeToTrack:number = 20;
+  public timeToTrack:number = 10;
    
   private lat:number;
   private long:number;
@@ -60,21 +60,21 @@ export class TrackComponent implements AfterViewInit{
 
       if(this.tracking)
       {
-        if(this.activator % 5 == 0)
+        if(this.activator % 2 == 0)
         {
 
           this.activator = 0;
           this.locationService.getPosition().then(pos=>
             {
               console.log(`Positon: ${pos.lng} ${pos.lat}`);
-              this.currWalk._distance += this.getDistance(pos.lng, pos.lat);
+              this.currWalk.distance += this.getDistance(pos.lng, pos.lat);
             });
         }
 
         if(this.percentLeft == 0)
         {
           this.backendService.postWalk(this.currWalk);
-          console.log(`Distance traveled: ${this.currWalk._distance}`);
+          console.log(`Distance traveled: ${this.currWalk.distance}`);
           this.tracking = false;
         }
       }

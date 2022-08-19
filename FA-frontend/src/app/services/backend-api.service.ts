@@ -8,24 +8,38 @@ import { WalkModelList } from '../walk-model-list';
   providedIn: 'root'
 })
 export class BackendApiService {
-  private url:string = 'https://localhost:7141/api/';
-
-  constructor(private http: HttpClient) {}
+  private url:string = 'https://localhost:7141/api/walks';
 
   async postWalk(model: WalkModel)
-  {
-    
+  {    
+    const response = await fetch
+    (
+      this.url + "/post",
+      {
+        mode: 'cors',
+        method: "POST",
+        headers: {
+                    'Access-Control-Allow-Origin':'*',
+                    "Content-Type": "application/json",
+                    "accept": "text-plain"
+      },
+        body: JSON.stringify(model),
+      }
+    );
+    console.log(response);
   }
 
   async getWalks(idUser:number)
   {
-    var data = this.url + "walks/get/" + idUser;
-    const response = fetch(data, {
+    const response = await fetch
+    (
+      this.url + "/get/" + idUser,
+      {
         method: "GET",
         headers: { "Content-Type": "application/json"},
-        body: null,
         mode: "no-cors",
-    });
+      }
+    );
     console.log(response);
   }
 }

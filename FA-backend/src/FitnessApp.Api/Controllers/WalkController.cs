@@ -1,3 +1,4 @@
+using System.Web.Helpers;
 using FitnessApp.ApplicationLayer.Services.Abstractions;
 using FitnessApp.InterfaceLayer.Dtos.Classes.Walk;
 using Microsoft.AspNetCore.Cors;
@@ -5,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FitnessApp.Api.Controllers;
 
-[ApiController]
 [EnableCors("AllowMyOrigin")]
+[ApiController]
 public class WalkController : ControllerBase
 {
     private readonly ILogger<WalkController> _logger;
@@ -21,11 +22,13 @@ public class WalkController : ControllerBase
     [ProducesResponseType(typeof(CreatedResult), 201)]
     [ProducesResponseType(400)]
     [HttpPost("api/walks/post")]
-    public IActionResult Post([FromBody] CreateWalkDto dto)
+    public async Task<IActionResult> PostWalk(CreateWalkDto dto)
     {
         int ret = -1;
+
         var tmp = dto;
         
+        Console.WriteLine(dto);        
         try
         {
             ret = _service.CreateWalk(dto);
@@ -42,9 +45,8 @@ public class WalkController : ControllerBase
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [HttpGet("api/walks/get/{idUser}")]
-    public IActionResult Get(int idUser)
+    public async Task<IActionResult> GetWalks(int idUser)
     {
-        Console.WriteLine("i ve been summoned");
         SimpleWalkDtoList ret;
         
         try

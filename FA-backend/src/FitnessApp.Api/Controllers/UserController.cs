@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FitnessApp.Api.Controllers;
 
-[Route("api/users")]
 [ApiController]
 [EnableCors("AllowMyOrigin")]
 public class UserController : ControllerBase
@@ -21,7 +20,7 @@ public class UserController : ControllerBase
 
     [ProducesResponseType(typeof(CreatedResult), 201)]
     [ProducesResponseType(400)]
-    [HttpPost]
+    [HttpPost("api/users/post")]
     public IActionResult Post([FromBody] CreateUserDto dto)
     {
         int ret = -1;

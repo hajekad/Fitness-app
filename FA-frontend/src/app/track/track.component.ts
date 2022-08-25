@@ -47,8 +47,7 @@ export class TrackComponent implements AfterViewInit{
     this.lat = 0;
     this.long = 0;
     this.tracking = false;
-    this.currWalk = new WalkModel(1);
-
+    this.currWalk = new WalkModel();
   }
 
   ngOnInit(): void {
@@ -62,7 +61,6 @@ export class TrackComponent implements AfterViewInit{
       {
         if(this.activator % 2 == 0)
         {
-
           this.activator = 0;
           this.locationService.getPosition().then(pos=>
             {
@@ -73,6 +71,8 @@ export class TrackComponent implements AfterViewInit{
 
         if(this.percentLeft == 0)
         {
+          this.currWalk.endLat = this.lat;
+          this.currWalk.endLong = this.long; 
           this.backendService.postWalk(this.currWalk);
           console.log(`Distance traveled: ${this.currWalk.distance}`);
           this.tracking = false;
@@ -95,8 +95,8 @@ export class TrackComponent implements AfterViewInit{
   {
     if(this.lat === 0 && this.long === 0)
     {
-      this.lat = lat;
-      this.long = long;
+      this.lat = this.currWalk.startLat = lat;
+      this.long = this.currWalk.startLong = long
 
       return 0;
     }
@@ -119,15 +119,21 @@ export class TrackComponent implements AfterViewInit{
   }
 
   onStart(src: CountdownComponent):void{
-    this.counter = src;
-    src.begin();
-    this.tracking = true;    
+    if(this.percentLeft == 100)
+    {
+      this.counter = src;
+      src.begin();
+      this.tracking = true;
+    }
   }
 
   resetTimer(){
+    this.percentLeft = 100;
+    this.lat = 0;
+    this.long = 0;
     this.counter.restart();
     this.tracking = false;
-    this.currWalk = new WalkModel(0);
+    this.currWalk = new WalkModel();
   }
 
   onClick():void{

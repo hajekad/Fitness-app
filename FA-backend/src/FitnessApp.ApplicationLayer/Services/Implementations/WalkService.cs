@@ -24,6 +24,9 @@ public class WalkService : IWalkService
     {
         var model = _mapper.Map<Walk>(dto);
         
+        Console.WriteLine("New Walk: \n");
+        model.print();
+        
         int ret = _walkRepository.CreateWalk(model);
         
         _logger.LogInformation($"Walk with id {ret} was created for user {dto._user_id}.");
@@ -38,6 +41,11 @@ public class WalkService : IWalkService
         try
         {
             List<Walk> models = _walkRepository.GetWalksRelatedTo(idUser);
+
+            foreach (var tmp in models)
+            {
+                tmp.print();
+            }
             
             ret = _mapper.Map<SimpleWalkDtoList>(models); 
         }

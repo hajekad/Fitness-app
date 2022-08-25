@@ -43,9 +43,11 @@ export class WalkModel
         this._endLong = value;
     }
 
-    constructor(_user_id: number = 0)
+    
+
+    constructor()
     {
-        this._user_id = _user_id;
+        this._user_id = -1;
         this._distance = 0;
         this._startLat = 0;
         this._startLong = 0;

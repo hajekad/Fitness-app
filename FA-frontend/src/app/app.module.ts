@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { MainComponent } from './main/main.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { TrackComponent } from './track/track.component';
@@ -21,7 +20,6 @@ function countdownConfigFactory(): CountdownConfig {
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent,
     TrackComponent,
   ],
   imports: [

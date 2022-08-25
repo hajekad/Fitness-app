@@ -1,28 +1,33 @@
-*{
-  user-select: none;
+.content-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
-section{
-  background-color: var(--bg-color-main);
+.buttonsSegment {
+    width: 70vw;
+    background-color: white;
+    border-radius: 2rem;
+    text-align: center;
 }
 
-#login-card{
-  width: 70%;
+#button {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
-#log-btn{
-  background-color: var(--bg-color-impact);
-  color: var(--bg-color-offWhite);
+.container-fluid {
+    display: flex;
+    justify-content: center;
 }
 
-input{
-  border-color: black;
+.input-group {
+    display: flex;
+    justify-content: center;
 }
 
-input.ng-invalid.ng-touched{
-  border: red 2px solid;
-}
-
-.error-msg{
-  color: red;
+.save {
+    margin-bottom: 1rem;
 }

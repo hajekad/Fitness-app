@@ -11,6 +11,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CountdownConfig, CountdownGlobalConfig, CountdownModule } from 'ngx-countdown';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultsComponent } from './results/results.component';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -21,6 +22,7 @@ function countdownConfigFactory(): CountdownConfig {
     AppComponent,
     LoginComponent,
     TrackComponent,
+    ResultsComponent,
   ],
   imports: [
     HttpClientModule,

@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CreateUserDto } from '../create-user-dto';
+import { BackendApiService } from '../services/backend-api.service';
 
 enum Sex{
   undefined,
@@ -26,48 +28,40 @@ enum Education{
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public model : CreateUserDto;
 
-  public sex : Sex;
-  public year : number;
-  public education : Education;
-
-  constructor(private http: HttpClient, private router:Router)
+  constructor(private http: HttpClient, private router:Router, private backendService:BackendApiService)
   {
-    this.sex = Sex.undefined;
-    this.year = -1;
-    this.education = Education.undefined;
+    this.model = new CreateUserDto();
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
   male()
   {
-    this.sex = Sex.male;
+    this.model._sex = Sex.male;
   }
 
   female()
   {
-    this.sex = Sex.female;
+    this.model._sex = Sex.female;
   }
 
   save()
   {
-    var e = (<HTMLInputElement>document.getElementById('edu'));
-    this.education = Number(e.value);
-
-    var y = (<HTMLInputElement>document.getElementById('yyyy'));
+    var e = <HTMLInputElement> document.getElementById('edu');
+    var y = <HTMLInputElement> document.getElementById('yyyy');
+    
+    this.model._edu = Number(e.value);
     var str = y.value;
     var newarr = str.split("-");
 
-    this.year = Number(newarr[0]);
+    this.model._birthYear = Number(newarr[0]);
 
-    console.log("Save:\n{\tyear: " + this.year + "\n\teducation: " + this.education + "\n\tsex:" + this.sex + "\n}")
-
-    if(!(this.year == -1 || this.education == Education.undefined || this.sex == Sex.undefined))
+    if(!(this.model._birthYear == -1 || this.model._edu == Education.undefined || this.model._sex == Sex.undefined))
     {
-      const wait = this.http.post('../assets/userinfo.json', JSON.stringify(this));
-      
+      this.backendService.postUser(this.model);      
       this.router.navigate(['track']);
     }
   }

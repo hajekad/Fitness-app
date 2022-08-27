@@ -36,6 +36,6 @@ public class UserController : ControllerBase
             return BadRequest();
         }
             
-        return Created(ret.ToString(), dto);
+        return Created(ret.ToString(), ret);
     }
 }

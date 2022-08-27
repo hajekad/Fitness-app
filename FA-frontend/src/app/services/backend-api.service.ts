@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CreateUserDto } from '../create-user-dto';
 import { WalkModel } from '../walk-model';
 import { WalkModelList } from '../walk-model-list';
 
@@ -9,28 +10,60 @@ import { WalkModelList } from '../walk-model-list';
   providedIn: 'root'
 })
 export class BackendApiService {
-  private url:string = 'https://localhost:7141/api/walks';
+  private url:string = 'https://localhost:7141/api';
   private idUser:number;
   private http:HttpClient;
+  private walkList: WalkModelList;
 
-  /**
-   *
-   */
   constructor(private HTTP: HttpClient, private router:Router) {
-    this.idUser = -1;
     this.http = HTTP;
 
-    const wait = this.http.get('../assets/id.txt', {responseType: 'text'})
-              .subscribe(data => this.getId(data));
+    this.idUser = Number(localStorage.getItem('userId'));
+
+    this.walkList = new WalkModelList;
+
+    console.log(this.idUser);
+  }
+
+  setIdUser(json: any)
+  {
+    this.idUser = Number(json.toString());
+    
+    localStorage.setItem('userId', this.idUser.toString()); 
+    
+    console.log("newId: " + localStorage.getItem('userId'));
+  }
+
+  async postUser(model: CreateUserDto) : Promise<number>
+  {
+    const response = await fetch
+    (
+      this.url + "/users/post",
+      {
+        mode: 'cors',
+        method: "POST",
+        headers: {
+                    'Access-Control-Allow-Origin':'*',
+                    "Content-Type": "application/json",
+                    "accept": "text-plain"
+      },
+        body: JSON.stringify(model),
+      }
+    )
+    .then(response => response.json())
+    .then(json => this.setIdUser(json));
+
+    return this.idUser;
   }
 
   async postWalk(model: WalkModel)
-  {
+  { 
+    this.appendNewWalk(model);
     model.user_id = this.idUser;
 
     const response = await fetch
     (
-      this.url + "/post",
+      this.url + "/walks/post",
       {
         mode: 'cors',
         method: "POST",
@@ -42,32 +75,21 @@ export class BackendApiService {
         body: JSON.stringify(model),
       }
     );
-    console.log("POST response: " + response);
+    console.log("Walk POST response: " + response);
   }
 
-  async getWalks(idUser:number)
+  appendNewWalk(model: WalkModel)
   {
-    const resp = await fetch
-    (
-      this.url + "/get/" + idUser,
-      {
-        method: "GET",
-        headers: { "Content-Type": "application/json"},
-      }
-    )
-    .then(response => response.json())
-    .then(json => console.log(json));
+    localStorage.setItem('walkList', this.getWalks() + JSON.stringify(model) + '\n');
   }
 
-  getId(data:string)
+  getWalks(): string
   {
-    this.idUser = Number(data);
+    let tmp = localStorage.getItem('walkList');
     
-    if(this.idUser == -1)
-    {
-      console.log('new user');
-      this.router.navigate(['login']);
-    }
-    console.log(this.idUser);
+    if(tmp)
+      return tmp;
+
+    return '';
   }
 }

@@ -28,7 +28,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 #button {
@@ -40,7 +39,8 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin: 4px 4px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;

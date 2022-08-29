@@ -1,6 +1,6 @@
 #content-wrapper {
     height: 100%;
-    background-image: url(../assets/bg.png );
+    background: linear-gradient(217deg, rgba(255,255,255), rgb(121, 21, 21) 75%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,7 +17,7 @@
     background-color: blueviolet;
 }
 #MainBody{
-    background-color: rgba(114, 114, 114,0.2);
+    background-color: rgba(114, 114, 114, 0.2);
     display: inherit;
     width: inherit;
     height: inherit;

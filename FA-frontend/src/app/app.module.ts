@@ -12,6 +12,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CountdownConfig, CountdownGlobalConfig, CountdownModule } from 'ngx-countdown';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultsComponent } from './results/results.component';
+import { defineLordIconElement } from "lord-icon-element";
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };

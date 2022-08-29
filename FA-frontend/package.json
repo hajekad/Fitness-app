@@ -25,6 +25,8 @@
     "bootstrap": "^5.2.0",
     "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
+    "lord-icon-element": "^3.4.3",
+    "lottie-web": "^5.9.6",
     "ng-circle-progress": "^1.6.0",
     "ngx-circle-progress": "^6.0.2",
     "ngx-cookie-service": "^14.0.1",

@@ -26,11 +26,11 @@
     bottom: 0;
     width: 100%;
     height: 15rem;
-    background: linear-gradient(320deg, #2a35a8, rgb(121, 21, 21) 85%);
+    /* background: linear-gradient(320deg, #2a35a8, rgb(121, 21, 21) 85%); */
 }
 
 #buttons {
-    background-color: rgba(114, 114, 114, 0.1);
+    /* background-color: rgba(114, 114, 114, 0.1); */
     width: 100%;
     height: inherit;
     display: flex;
@@ -39,7 +39,7 @@
 }
 
 #button {
-    background-color: #ff0000;
+    background-color: #000000;
     border: rgba(0, 0, 0, 0.363);
     color: white;
     height: 4rem;

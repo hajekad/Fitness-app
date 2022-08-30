@@ -16,9 +16,18 @@ export class BackendApiService {
   private walkList: WalkModelList;
 
   constructor(private HTTP: HttpClient, private router:Router) {
+    let tmp = localStorage.getItem('userId');
+    
+    if(tmp == null)
+    {
+      this.router.navigate(['login']);
+      tmp = localStorage.getItem('userId');
+    }
+    
     this.http = HTTP;
 
-    this.idUser = Number(localStorage.getItem('userId'));
+
+    this.idUser = Number(tmp);
 
     this.walkList = new WalkModelList;
 

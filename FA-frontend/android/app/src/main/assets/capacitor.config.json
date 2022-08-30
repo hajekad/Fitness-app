@@ -1,6 +1,6 @@
 {
-	"appId": "com.example.app",
-	"appName": "6-minut",
-	"webDir": "dist",
+	"appId": "com.android.app",
+	"appName": "fa-angular",
+	"webDir": "dist/fa-angular",
 	"bundledWebRuntime": false
 }

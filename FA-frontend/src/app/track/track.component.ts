@@ -24,7 +24,7 @@ function countdownConfigFactory(): CountdownConfig {
 export class TrackComponent implements AfterViewInit{  
   // loading circle variables
   public outerStroke:string = "#FF0000";
-  public outerStrokeGradientStop:string = "#2a35a8";
+  public outerStrokeGradientStop:string = "#000000";
   public innerStroke:string = "#FFFFFF";
   public tit:string = '';
 

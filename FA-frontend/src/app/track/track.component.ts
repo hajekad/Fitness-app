@@ -27,6 +27,7 @@ export class TrackComponent implements AfterViewInit{
   public outerStrokeGradientStop:string = "#000000";
   public innerStroke:string = "#FFFFFF";
   public tit:string = '';
+  public after:boolean;
 
   public currWalk: WalkModel;
   public percentLeft:number;
@@ -36,6 +37,7 @@ export class TrackComponent implements AfterViewInit{
   private long:number;
   private activator:number;
   private tracking:boolean;
+  public birthYear:number;
 
   status = 'start';
   @ViewChild('countdown')
@@ -48,6 +50,8 @@ export class TrackComponent implements AfterViewInit{
     this.long = 0;
     this.tracking = false;
     this.currWalk = new WalkModel();
+    this.after = false;
+    this.birthYear = Number(localStorage.getItem('yyyy')?.toString());
   }
 
   ngOnInit(): void {
@@ -71,6 +75,7 @@ export class TrackComponent implements AfterViewInit{
 
         if(this.percentLeft == 0)
         {
+          this.after = true;
           this.currWalk.endLat = this.lat;
           this.currWalk.endLong = this.long; 
           this.backendService.postWalk(this.currWalk);
@@ -121,6 +126,7 @@ export class TrackComponent implements AfterViewInit{
   onStart(src: CountdownComponent):void{
     if(this.percentLeft == 100)
     {
+      this.after = false;
       this.counter = src;
       src.begin();
       this.tracking = true;
@@ -128,6 +134,7 @@ export class TrackComponent implements AfterViewInit{
   }
 
   resetTimer(){
+    this.after = false;
     this.percentLeft = 100;
     this.lat = 0;
     this.long = 0;

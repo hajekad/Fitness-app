@@ -45,6 +45,7 @@ export class BackendApiService {
 
   async postUser(model: CreateUserDto) : Promise<number>
   {
+    localStorage.setItem('yyyy', model._birthYear.toString());
     const response = await fetch
     (
       this.url + "/users/post",

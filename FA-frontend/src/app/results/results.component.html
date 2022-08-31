@@ -1,5 +1,13 @@
 <section class="content-wrapper">
-    <p class="fw-normal text-white h6">
-        {{walkList}}
-    </p>
+    <div class="infoSection">
+        <p class="fw-normal text-dark h1">Výsledky</p>
+        
+        <div class="jsonsWrapper">    
+            <div class="jsons">               
+                <div class="jsons" *ngFor="let element of dates">
+                    <app-walk-display [distance]=popDistance() [date]="popDate()"></app-walk-display>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

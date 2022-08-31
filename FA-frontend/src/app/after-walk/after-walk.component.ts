@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 enum result
 {
@@ -23,22 +23,37 @@ class ageCategory
   templateUrl: './after-walk.component.html',
   styleUrls: ['./after-walk.component.css']
 })
-export class AfterWalkComponent implements OnInit {
+export class AfterWalkComponent implements OnChanges {
   private readonly green:string = "Normální výsledek";  
   private readonly yellow:string = "Středně snížené hodnoty";
   private readonly red:string = "Výrazně zhoršené hodnoty";
   
-  @Input() age?:number;
+  @Input() birthYear?:number;
   @Input() distance?:number;
+  @Input() toShow?:boolean;
 
+  private age?:number;
   public state?:string;
 
-  constructor( private route:ActivatedRoute )
+  constructor( private router:Router, private route:ActivatedRoute )
   {
   }
   
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.state = this.decideResults();
+    this.age = (new Date()).getFullYear() - Number(this.birthYear);
+    console.log("age: " + this.age);
+    console.log("distance: " + this.distance);
+  }
+
+  history()
+  {
+    this.router.navigate(['results']);
+  }
+
+  continue()
+  {
+    this.toShow = false;
   }
 
   lowerAge(): ageCategory

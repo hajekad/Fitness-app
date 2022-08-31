@@ -1,9 +1,9 @@
 import { WalkModel } from "./walk-model";
 
 export class WalkModelList {
-    public containts: Array<WalkModel>;
+    public contains: Array<WalkModel>;
 
     constructor() {
-        this.containts = [];        
+        this.contains = [];        
     }
 }

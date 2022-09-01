@@ -4,8 +4,8 @@
         
         <div class="jsonsWrapper">    
             <div class="jsons">               
-                <div class="jsons" *ngFor="let element of dates">
-                    <app-walk-display [distance]=popDistance() [date]="popDate()"></app-walk-display>
+                <div class="jsons" *ngFor="let element of dates; let i = index">
+                    <app-walk-display [distance]="distances[i]" [date]="dates[i]"></app-walk-display>
                 </div>
             </div>
         </div>

@@ -62,7 +62,8 @@ export class LoginComponent implements OnInit {
     if(!(this.model._birthYear == -1 || this.model._edu == Education.undefined || this.model._sex == Sex.undefined))
     {
       localStorage.setItem('walkList', '')
-      this.backendService.postUser(this.model);      
+      this.backendService.postUser(this.model);
+      localStorage.setItem('userId', '1');      
       this.router.navigate(['track']);
     }
   }

@@ -21,6 +21,21 @@
     user-select: none;
 }
 
+.debug{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 1rem;
+    height: 10rem;
+    overflow: scroll; 
+}
+
+.debugText {
+    white-space: pre-wrap;
+    color: black;
+}
+
 .futr {
     position: absolute;
     left: 0;

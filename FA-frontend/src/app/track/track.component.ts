@@ -32,6 +32,7 @@ export class TrackComponent implements AfterViewInit{
   public currWalk: WalkModel;
   public percentLeft:number;
   public timeToTrack:number = 360;
+  public debugText:string;
    
   private lat:number;
   private long:number;
@@ -44,6 +45,8 @@ export class TrackComponent implements AfterViewInit{
   counter!: CountdownComponent;
 
   constructor( private router:Router, private locationService:LocationService, private backendService:BackendApiService) { 
+    this.debugText = '';
+
     this.percentLeft = 100;
     this.activator = 0;
     this.lat = 0;
@@ -66,11 +69,11 @@ export class TrackComponent implements AfterViewInit{
         if(this.activator % 2 == 0)
         {
           this.activator = 0;
-          this.locationService.getPosition().then(pos=>
-            {
-              console.log(`Positon: ${pos.lng} ${pos.lat}`);
-              this.currWalk.distance += this.getDistance(pos.lng, pos.lat);
-            });
+
+          this.locationService.watchPosition();
+          var newDist = this.getDistance(this.locationService.lng, this.locationService.lat);
+          this.currWalk.distance += newDist;
+          this.debugText += 'Lat: ' + this.lat + ' Long: ' + this.long + ' Dist: ' + newDist + '\n';
         }
 
         if(this.percentLeft == 0)
@@ -134,6 +137,7 @@ export class TrackComponent implements AfterViewInit{
   }
 
   resetTimer(){
+    this.debugText = '';
     this.after = false;
     this.percentLeft = 100;
     this.lat = 0;

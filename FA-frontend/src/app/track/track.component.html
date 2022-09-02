@@ -1,3 +1,4 @@
+        <app-after-walk [distance]=currWalk.distance [birthYear]=birthYear [toShow]=after></app-after-walk>
         <div id="progress" (change)="getPercent()" class="TrackModule">
             <div class="circle-wrapper">
                 <div #ci id="circle">
@@ -28,7 +29,7 @@
                     </circle-progress>
     
                 </div>
-    
+                
                 <div class="heart-wrapper">
                     <img id="heart" src="../../assets/logoBIGreverse.png" alt="logo">
                 </div>
@@ -47,8 +48,11 @@
             </h2>
         </div>
 
-        <div class="animation">
 
+        <div class="debug">
+            <div class="debugText">
+                {{debugText}}
+            </div>
         </div>
         
         <div class="futr">

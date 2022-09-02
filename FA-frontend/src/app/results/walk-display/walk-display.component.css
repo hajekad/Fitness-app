@@ -1,0 +1,41 @@
+.long {
+    display: flex;
+    
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 360rem;
+    border-style: solid;
+    border-color: black;
+    width: 125%;
+    height: 3.5rem;
+    background-color: white;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+
+    border-radius: 360rem;
+    border-style: solid;
+    width: 7rem;
+    border-color: red;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.circleText {
+    display: flex;
+    align-items:center;
+    
+    width: 100%;
+    justify-content: center;
+}

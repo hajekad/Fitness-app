@@ -13,6 +13,8 @@ import { CountdownConfig, CountdownGlobalConfig, CountdownModule } from 'ngx-cou
 import { HttpClientModule } from '@angular/common/http';
 import { ResultsComponent } from './results/results.component';
 import { defineLordIconElement } from "lord-icon-element";
+import { AfterWalkComponent } from './after-walk/after-walk.component';
+import { WalkDisplayComponent } from './results/walk-display/walk-display.component';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -24,6 +26,8 @@ function countdownConfigFactory(): CountdownConfig {
     LoginComponent,
     TrackComponent,
     ResultsComponent,
+    AfterWalkComponent,
+    WalkDisplayComponent,
   ],
   imports: [
     HttpClientModule,

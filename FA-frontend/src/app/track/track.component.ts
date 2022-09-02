@@ -24,30 +24,37 @@ function countdownConfigFactory(): CountdownConfig {
 export class TrackComponent implements AfterViewInit{  
   // loading circle variables
   public outerStroke:string = "#FF0000";
-  public outerStrokeGradientStop:string = "#2a35a8";
+  public outerStrokeGradientStop:string = "#000000";
   public innerStroke:string = "#FFFFFF";
   public tit:string = '';
+  public after:boolean;
 
   public currWalk: WalkModel;
   public percentLeft:number;
-  public timeToTrack:number = 10;
+  public timeToTrack:number = 360;
+  public debugText:string;
    
   private lat:number;
   private long:number;
   private activator:number;
   private tracking:boolean;
+  public birthYear:number;
 
   status = 'start';
   @ViewChild('countdown')
   counter!: CountdownComponent;
 
   constructor( private router:Router, private locationService:LocationService, private backendService:BackendApiService) { 
+    this.debugText = '';
+
     this.percentLeft = 100;
     this.activator = 0;
     this.lat = 0;
     this.long = 0;
     this.tracking = false;
     this.currWalk = new WalkModel();
+    this.after = false;
+    this.birthYear = Number(localStorage.getItem('yyyy')?.toString());
   }
 
   ngOnInit(): void {
@@ -62,15 +69,16 @@ export class TrackComponent implements AfterViewInit{
         if(this.activator % 2 == 0)
         {
           this.activator = 0;
-          this.locationService.getPosition().then(pos=>
-            {
-              console.log(`Positon: ${pos.lng} ${pos.lat}`);
-              this.currWalk.distance += this.getDistance(pos.lng, pos.lat);
-            });
+
+          this.locationService.watchPosition();
+          var newDist = this.getDistance(this.locationService.lng, this.locationService.lat);
+          this.currWalk.distance += newDist;
+          this.debugText += 'Lat: ' + this.lat + ' Long: ' + this.long + ' Dist: ' + newDist + '\n';
         }
 
         if(this.percentLeft == 0)
         {
+          this.after = true;
           this.currWalk.endLat = this.lat;
           this.currWalk.endLong = this.long; 
           this.backendService.postWalk(this.currWalk);
@@ -121,6 +129,7 @@ export class TrackComponent implements AfterViewInit{
   onStart(src: CountdownComponent):void{
     if(this.percentLeft == 100)
     {
+      this.after = false;
       this.counter = src;
       src.begin();
       this.tracking = true;
@@ -128,6 +137,8 @@ export class TrackComponent implements AfterViewInit{
   }
 
   resetTimer(){
+    this.debugText = '';
+    this.after = false;
     this.percentLeft = 100;
     this.lat = 0;
     this.long = 0;

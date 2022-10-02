@@ -34,7 +34,7 @@ export class ResultsComponent implements OnInit {
       {
         let jsonObject: any = JSON.parse(element);
         this.distances.push(jsonObject._distance);
-        this.dates.push('20-2-2000');
+        this.dates.push(jsonObject._date);
       }
     });
   }

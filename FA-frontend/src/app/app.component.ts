@@ -15,21 +15,11 @@ export class AppComponent {
   /**
    *
    */
-  constructor(HTTP: HttpClient, private router:Router) {
+  constructor(HTTP: HttpClient) {
     this.http = HTTP;
     this.idUser = -1;
   }
 
   async ngOnInit(): Promise<void> {
   }
-
-  home(){
-    this.router.navigate(['track']);
-  }
-
-  results()
-  {
-    this.router.navigate(['results']);
-  }
-
 }

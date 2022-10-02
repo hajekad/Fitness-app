@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Sockets;
 using FitnessApp.ApplicationLayer.Services.Abstractions;
 using FitnessApp.ApplicationLayer.Services.Implementations;
 using FitnessApp.InfrastructureLayer.Storage.Abstractions;
@@ -53,4 +55,20 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
 });
 
+string localIP = LocalIPAddress();
+app.Urls.Add("http://" + localIP + ":5072");
+app.Urls.Add("https://" + localIP + ":4000");
+
 app.Run();
+
+static string LocalIPAddress() {
+    using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0)) {
+        socket.Connect("8.8.8.8", 65530);
+        IPEndPoint? endPoint = socket.LocalEndPoint as IPEndPoint;
+        if (endPoint != null) {
+            return endPoint.Address.ToString();
+        } else {
+            return "127.0.0.1";
+        }
+    }
+}

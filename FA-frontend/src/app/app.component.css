@@ -9,13 +9,6 @@
     overflow-x: hidden;
 }
 
-#nav{
-    width: 100vw;
-    margin-right: 0;
-    margin-left: 0;
-    color: white;
-    background-color: blueviolet;
-}
 #MainBody{
     /* background-color: rgba(114, 114, 114, 0.2); */
     display: inherit;
@@ -24,4 +17,17 @@
     width: 100vw;
     flex-direction: column;
     align-items: center;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    cursor: pointer;
 }

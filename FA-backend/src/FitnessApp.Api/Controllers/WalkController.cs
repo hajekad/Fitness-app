@@ -47,6 +47,8 @@ public class WalkController : ControllerBase
     [HttpGet("api/walks/get/{idUser}")]
     public async Task<IActionResult> GetWalks(int idUser)
     {
+        _logger.LogInformation("connected");
+        
         SimpleWalkDtoList ret;
         
         try

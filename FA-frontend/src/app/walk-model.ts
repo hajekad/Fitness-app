@@ -42,6 +42,13 @@ export class WalkModel
     public set endLong(value: number) {
         this._endLong = value;
     }
+    private _date: string;
+    public get date(): string {
+        return this._date;
+    }
+    public set date(value: string) {
+        this._date = value;
+    }
 
     
 
@@ -53,5 +60,6 @@ export class WalkModel
         this._startLong = 0;
         this._endLat = 0;
         this._endLong = 0;
+        this._date = new Date().toLocaleDateString();
     }
 }

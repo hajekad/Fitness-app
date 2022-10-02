@@ -37,7 +37,7 @@ export class TrackComponent implements AfterViewInit{
   private lat:number;
   private long:number;
   private activator:number;
-  private tracking:boolean;
+  public tracking:boolean;
   public birthYear:number;
 
   status = 'start';

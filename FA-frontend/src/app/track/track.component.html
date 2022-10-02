@@ -1,3 +1,5 @@
+<app-navbar-custom></app-navbar-custom>
+    
         <app-after-walk [distance]=currWalk.distance [birthYear]=birthYear [toShow]=after></app-after-walk>
         <div id="progress" (change)="getPercent()" class="TrackModule">
             <div class="circle-wrapper">
@@ -48,11 +50,8 @@
             </h2>
         </div>
 
-
-        <div class="debug">
-            <div class="debugText">
-                {{debugText}}
-            </div>
+        <div class="animation" *ngIf="tracking">
+            <img src="../../assets/walker.gif" class="gif"/>
         </div>
         
         <div class="futr">

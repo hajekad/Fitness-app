@@ -1,0 +1,17 @@
+.textContainer {
+    margin-top: 5rem;
+    display: block;
+    justify-content: center;
+    width: 80%;
+}
+
+.contentWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.minutLink {
+    width: 100%;
+    display: block;
+    justify-content: center;
+}

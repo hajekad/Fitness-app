@@ -17,6 +17,7 @@ import { AfterWalkComponent } from './after-walk/after-walk.component';
 import { WalkDisplayComponent } from './results/walk-display/walk-display.component';
 import { InfoScreenComponent } from './info-screen/info-screen.component';
 import { NavbarCustomComponent } from './navbar-custom/navbar-custom.component';
+import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -44,7 +45,17 @@ function countdownConfigFactory(): CountdownConfig {
     MatIconModule,
     NgCircleProgressModule.forRoot()
   ],
-  providers: [CookieService,{ provide: CountdownGlobalConfig, useFactory: countdownConfigFactory }],
+  providers: [CookieService,
+              {
+                provide: CountdownGlobalConfig,
+                useFactory: countdownConfigFactory 
+              },
+              {
+                provide: API_KEY,
+                useValue: 'AIzaSyA5WaMdUaRwVfJl2u8-yVWBVfr6CScaS1k',
+              },
+              GoogleSheetsDbService
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CreateUserInt,  } from 'src/app/models/create-user-int';
 import { WalkModelInt } from 'src/app/models/walk-model-int';
-import { Observable } from 'rxjs';
+import { max, Observable } from 'rxjs';
+import { waitForAsync } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root',
@@ -15,23 +16,45 @@ export class GoogleSheetServiceService {
 
 
   createUser(
-    _sex: number,
-    _edu: number,
-    _birthYear: number,
-    _athlete: boolean,
-    _smoker: boolean,
+    _id: string,
+    _sex: string,
+    _education: string,
+    _birthYear: string,
+    _athlete: string,
+    _smoker: string,
   ): Observable<CreateUserInt> {
     return this.http.post<CreateUserInt>(`${environment.CONNECTION_URL_USERS}`, {
+      _id,
       _sex,
-      _edu,
+      _education,
       _birthYear,
       _athlete,
       _smoker,
     });
   }
 
+  maxId(payload : any) : number {
+    const wait = console.log({payload});
+
+    let max = 0;
+    for (let i = 0; i < payload.length; i++) {
+      if (payload[i]._id > max) {
+        max = payload[i]._id;
+      }
+    }
+
+    return ++max;
+  }
+
+  async getUserMaxId() {
+    const response = await this.http.get(`${environment.CONNECTION_URL_USERS}`).toPromise();
+    const maxId = this.maxId(response);
+    return maxId;
+  }
+
   listUser() {
-    return this.http.get(`${environment.CONNECTION_URL_USERS}`);
+    return this.http.get(`${environment.CONNECTION_URL_USERS}`)
+      .subscribe(data => console.log(data));
   }
 
   deleteUser(id: number) {

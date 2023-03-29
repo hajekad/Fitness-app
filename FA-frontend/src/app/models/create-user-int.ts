@@ -1,20 +1,8 @@
-enum Sex{
-    undefined,
-    male,
-    female,
-}
-
-enum Education{
-    undefined,
-    ZS,
-    SS,
-    VS,
-}
-
 export interface CreateUserInt {
-    _sex: Sex;
-    _edu: Education;
+    _id: number;
+    _sex: number;
+    _education: number;
     _birthYear: number;
-    _athlete: boolean;
-    _smoker: boolean;
+    _athlete: string;
+    _smoker: string;
 }

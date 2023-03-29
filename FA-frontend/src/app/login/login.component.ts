@@ -1,10 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CreateUserDto } from '../create-user-dto';
-import { BackendApiService } from '../services/backend-api.service';
 import { GoogleSheetServiceService } from '../services/google-sheet-service.service';
-import { GoogleAuth } from 'google-auth-library';
 
 enum Sex{
   undefined,
@@ -33,7 +30,7 @@ export class LoginComponent implements OnInit {
   public model : CreateUserDto;
   private posted : boolean;
 
-  constructor(private http: HttpClient, private router:Router, private googleSheetsService:GoogleSheetServiceService)
+  constructor(private router:Router, private googleSheetsService:GoogleSheetServiceService)
   {
     this.posted = false;
     this.model = new CreateUserDto();
@@ -82,7 +79,7 @@ export class LoginComponent implements OnInit {
                                           console.log(response);
                                         });
       localStorage.setItem('userId', `${newId}`);      
-      //this.router.navigate(['track']);
+      this.router.navigate(['track']);
     } else {
       console.log(`sex: ${this.model._sex}`);
       console.log(`year: ${y}`);

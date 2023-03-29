@@ -4,6 +4,7 @@ import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdo
 import { LocationService } from '../services/location.service';
 import { BackendApiService } from '../services/backend-api.service';
 import { WalkModel } from '../walk-model';
+import { GoogleSheetServiceService } from '../services/google-sheet-service.service';
 
 function countdownConfigFactory(): CountdownConfig {
   return { format: `mm:ss` };
@@ -44,7 +45,7 @@ export class TrackComponent implements AfterViewInit{
   @ViewChild('countdown')
   counter!: CountdownComponent;
 
-  constructor( private router:Router, private locationService:LocationService) { 
+  constructor( private router:Router, private locationService:LocationService, private googleSheetsService:GoogleSheetServiceService, private backEndApiService:BackendApiService) { 
     this.debugText = '';
 
     this.percentLeft = 100;
@@ -73,7 +74,6 @@ export class TrackComponent implements AfterViewInit{
           this.locationService.watchPosition();
           var newDist = this.getDistance(this.locationService.lng, this.locationService.lat);
           this.currWalk.distance += newDist;
-          this.debugText += 'Lat: ' + this.lat + ' Long: ' + this.long + ' Dist: ' + newDist + '\n';
         }
 
         if(this.percentLeft == 0)
@@ -81,8 +81,22 @@ export class TrackComponent implements AfterViewInit{
           this.after = true;
           this.currWalk.endLat = this.lat;
           this.currWalk.endLong = this.long; 
-          // this.backendService.postWalk(this.currWalk);
-          // add postWalk
+
+          let id = localStorage.getItem('userId');
+          
+          this.backEndApiService.appendNewWalk(this.currWalk);
+
+          this.googleSheetsService.createWalk (
+            `${id?.toString()}`,
+            this.currWalk.distance.toString(),
+            this.currWalk.startLat.toString(),
+            this.currWalk.startLong.toString(),
+            this.currWalk.endLat.toString(),
+            this.currWalk.endLong.toString(),
+            this.currWalk.date.toString(),
+          ).subscribe(response => {
+            console.log(response);
+          });
           //
           console.log(`Distance traveled: ${this.currWalk.distance}`);
           this.tracking = false;
@@ -91,7 +105,6 @@ export class TrackComponent implements AfterViewInit{
       
       this.activator++;
     }, 1000)
-
   }
 
   getPercent():number{

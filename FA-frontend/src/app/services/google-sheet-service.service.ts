@@ -71,12 +71,12 @@ export class GoogleSheetServiceService {
 
 
   createWalk(
-    _user_id: number,
-    _distance: number,
-    _startLat: number,
-    _startLong: number,  
-    _endLat: number,
-    _endLong: number,
+    _user_id: string,
+    _distance: string,
+    _startLat: string,
+    _startLong: string,
+    _endLat: string,
+    _endLong: string,
     _date: string,
   ): Observable<CreateUserInt> {
     return this.http.post<CreateUserInt>(`${environment.CONNECTION_URL_WALKS}`, {

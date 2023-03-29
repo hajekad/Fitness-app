@@ -23,14 +23,19 @@ export class GoogleSheetServiceService {
     _athlete: string,
     _smoker: string,
   ): Observable<CreateUserInt> {
-    return this.http.post<CreateUserInt>(`${environment.CONNECTION_URL_USERS}`, {
-      _id,
-      _sex,
-      _education,
-      _birthYear,
-      _athlete,
-      _smoker,
-    });
+    try {
+      return this.http.post<CreateUserInt>(`${environment.CONNECTION_URL_USERS}`, {
+        _id,
+        _sex,
+        _education,
+        _birthYear,
+        _athlete,
+        _smoker,
+      })
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   maxId(payload : any) : number {
@@ -47,9 +52,14 @@ export class GoogleSheetServiceService {
   }
 
   async getUserMaxId() {
-    const response = await this.http.get(`${environment.CONNECTION_URL_USERS}`).toPromise();
-    const maxId = this.maxId(response);
-    return maxId;
+    try {
+      const response = await this.http.get(`${environment.CONNECTION_URL_USERS}`).toPromise();
+      const maxId = this.maxId(response);
+      return maxId;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   listUser() {

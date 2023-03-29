@@ -32,7 +32,7 @@ export class TrackComponent implements AfterViewInit{
 
   public currWalk: WalkModel;
   public percentLeft:number;
-  public timeToTrack:number = 10;
+  public timeToTrack:number = 360;
   public debugText:string;
    
   private lat:number;

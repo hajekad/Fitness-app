@@ -61,25 +61,32 @@ export class LoginComponent implements OnInit {
     this.model._birthYear = Number(newarr[0]);
 
     if(this.model._birthYear != -1 && this.model._education != Education.undefined && this.model._sex != Sex.undefined) {
-      
-      let newId = await this.googleSheetsService.getUserMaxId();
+      try {
+        let newId = await this.googleSheetsService.getUserMaxId();
 
-      console.log(`Max: ${newId}`)
+        console.log(`Max: ${newId}`)
 
-      localStorage.setItem('walkList', '')
+        localStorage.setItem('walkList', '')
+        try {
+          this.googleSheetsService.createUser (
+                                              newId.toString(),
+                                              this.model._sex.toString(),
+                                              this.model._education.toString(),
+                                              this.model._birthYear.toString(),
+                                              this.model._athlete.toString(),
+                                              this.model._smoker.toString()
+                                            ).subscribe(response => {
+                                              console.log(response);
+                                            });
+        } catch (error) {
+          throw error;
+        }
 
-      this.googleSheetsService.createUser (
-                                          newId.toString(),
-                                          this.model._sex.toString(),
-                                          this.model._education.toString(),
-                                          this.model._birthYear.toString(),
-                                          this.model._athlete.toString(),
-                                          this.model._smoker.toString()
-                                        ).subscribe(response => {
-                                          console.log(response);
-                                        });
-      localStorage.setItem('userId', `${newId}`);      
-      this.router.navigate(['track']);
+        localStorage.setItem('userId', `${newId}`);      
+        this.router.navigate(['track']);
+      } catch (error) {
+        console.log("Try again when you have internet connection!");
+      }
     } else {
       console.log(`sex: ${this.model._sex}`);
       console.log(`year: ${y}`);

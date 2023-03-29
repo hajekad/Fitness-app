@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  GOOGLE_APPLICATION_CREDENTIALS: './secrets.json',
-  SHEET_ID: '1kA7qpC_RW0GxpI5rEHydTyENCV7LyGVn-cDNUSyAMVI'
+  CONNECTION_URL_WALKS:
+    'https://sheet.best/api/sheets/656597b3-bd8e-44fe-8c7a-d7f7609f60e5',
+  CONNECTION_URL_USERS:
+    'https://sheet.best/api/sheets/ec2eb32b-db3b-4b40-b9ed-a9e452172325',
 };
 
 /*

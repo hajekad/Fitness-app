@@ -44,7 +44,7 @@ export class TrackComponent implements AfterViewInit{
   @ViewChild('countdown')
   counter!: CountdownComponent;
 
-  constructor( private router:Router, private locationService:LocationService, private backendService:BackendApiService) { 
+  constructor( private router:Router, private locationService:LocationService) { 
     this.debugText = '';
 
     this.percentLeft = 100;
@@ -81,7 +81,9 @@ export class TrackComponent implements AfterViewInit{
           this.after = true;
           this.currWalk.endLat = this.lat;
           this.currWalk.endLong = this.long; 
-          this.backendService.postWalk(this.currWalk);
+          // this.backendService.postWalk(this.currWalk);
+          // add postWalk
+          //
           console.log(`Distance traveled: ${this.currWalk.distance}`);
           this.tracking = false;
         }

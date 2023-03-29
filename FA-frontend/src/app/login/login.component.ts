@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CreateUserDto } from '../create-user-dto';
 import { BackendApiService } from '../services/backend-api.service';
-import { GoogleSheetsService } from '../services/google-sheet-service.service';
+import { GoogleSheetServiceService } from '../services/google-sheet-service.service';
 import { GoogleAuth } from 'google-auth-library';
 
 enum Sex{
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   public model : CreateUserDto;
   private posted : boolean;
 
-  constructor(private http: HttpClient, private router:Router, private googleSheetsService:GoogleSheetsService)
+  constructor(private http: HttpClient, private router:Router, private googleSheetsService:GoogleSheetServiceService)
   {
     this.posted = false;
     this.model = new CreateUserDto();
@@ -65,7 +65,14 @@ export class LoginComponent implements OnInit {
 
     if(!(this.model._birthYear == -1 || this.model._edu == Education.undefined || this.model._sex == Sex.undefined))
     {
-      this.googleSheetsService.getUsers();
+      this.googleSheetsService.listUser().subscribe(response => {
+        console.log(response);
+      });
+
+      this.googleSheetsService.listWalk().subscribe(response => {
+        console.log(response);
+      });
+
       // localStorage.setItem('walkList', '')
       // this.backendService.postUser(this.model);
       // localStorage.setItem('userId', '1');      

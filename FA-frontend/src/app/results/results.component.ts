@@ -14,12 +14,15 @@ export class ResultsComponent implements OnInit {
   public walkList:WalkModelList;
   public dates:Array<string>;
   public distances:Array<number>;
+  public id: any;
 
   constructor(private router:Router, private backendService:BackendApiService)
   {
     this.walkList = new WalkModelList;
     this.distances = [];
     this.dates = [];
+    this.id = localStorage.getItem('userId');
+
   }
 
   ngOnInit()

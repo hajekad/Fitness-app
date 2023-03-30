@@ -1,4 +1,4 @@
-package com.android.app;
+package cz.minuty.app;
 
 import com.getcapacitor.BridgeActivity;
 import android.content.Context;

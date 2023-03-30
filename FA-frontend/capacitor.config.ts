@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.android.app',
-  appName: 'fa-angular',
+  appName: '6 minut',
   webDir: 'dist/fa-angular',
   bundledWebRuntime: false
 };

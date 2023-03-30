@@ -45,7 +45,7 @@ export class TrackComponent implements AfterViewInit{
   @ViewChild('countdown')
   counter!: CountdownComponent;
 
-  constructor( private router:Router, private locationService:LocationService, private googleSheetsService:GoogleSheetServiceService, private backEndApiService:BackendApiService) { 
+  constructor(private router:Router, private locationService:LocationService, private googleSheetsService:GoogleSheetServiceService, private backEndApiService:BackendApiService) { 
     this.debugText = '';
 
     this.percentLeft = 100;
